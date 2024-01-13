@@ -17,6 +17,14 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('category_id')->unsigned();
+            $table->string('discription')->nullable();
+            $table->time('open_time');
+            $table->time('close_time');
+            $table->integer('price_range')->nullable();
+            $table->string('postal_code');
+            $table->string('address');
+            $table->string('phone_number');
+            $table->string('holiday')->nullable();
             $table->timestamps();
         });
     }
