@@ -17,8 +17,10 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="https://kit.fontawesome.com/6b575be985.js" crossorigin="anonymous"></script>
 
-     <!-- Styles -->
-     <link href="{{ asset('css/nagoyameshi.css') }}" rel="stylesheet">
+    <!-- Styles -->
+    <link href="{{ asset('css/nagoyameshi.css') }}" rel="stylesheet">
+
+    @yield('css')
 </head>
 <body>
     <div id="app">
@@ -33,5 +35,9 @@
         @component('components.footer')
         @endcomponent
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    @yield('js')
 </body>
 </html>
