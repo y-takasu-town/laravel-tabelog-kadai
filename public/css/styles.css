@@ -6,12 +6,13 @@ body {
 }
 
 .top-container {
-    background-image: url('{{ asset('images/nagoya-bg.jpg') }}');
+    background-image: url('/images/nagoya-bg.jpg') ;
     background-size: cover;
     background-position: center;
     color: #fff; /* テキストの色を白に設定 */
     padding: 100px 0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* テキストに影を追加 */
+    height: 100vh;
 }
 
 .btn-primary {
