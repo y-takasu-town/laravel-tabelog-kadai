@@ -13,7 +13,7 @@ class Store extends Model
         'name',
         'category_id',
         'discription',
-        'time',
+        'open_time',
         'close_time',
         'price_range',
         'postal_code',
@@ -21,4 +21,9 @@ class Store extends Model
         'phone_number',
         'holiday',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

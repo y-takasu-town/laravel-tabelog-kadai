@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             CategoriesTableSeeder::class,
+            StoresTableSeeder::class,
             // 他のSeederクラスもここに追加可能
         ]);
     }

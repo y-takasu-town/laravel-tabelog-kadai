@@ -12,11 +12,17 @@ class StoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $stores = '';
- 
-        return view('stores.index', compact('stores'));    }
+        // nameを曖昧検索
+        $stores = Store::where('name', 'like', '%' . $request->name . '%')
+            // categoryを検索
+            ->where('category_id', $request->category_id)
+            // ->orWhere('category_id', $request->category_id)
+            ->get();
+
+        return view('stores.index', compact('stores'));    
+    }
 
     /**
      * Show the form for creating a new resource.

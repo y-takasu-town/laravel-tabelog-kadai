@@ -22,7 +22,8 @@ Route::get('/', function () {
 
 Route::get('/', [TopController::class, 'index']);
 
-Route::resource('stores', StoreController::class)->middleware(['auth', 'verified']);
+// Route::resource('stores', StoreController::class)->middleware(['auth', 'verified']);
+Route::resource('stores', StoreController::class);
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
