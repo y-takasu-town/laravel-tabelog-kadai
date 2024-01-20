@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-4 text-center mx-auto">
                 <h1 class="display-3">NAGOYAMESHI</h1>
-                <p class="lead">名古屋のB級グルメをおしゃれに紹介</p>
+                <p class="lead">名古屋のB級グルメを、探そう。</p>
                 <form action="{{ route('stores.index') }}" method="GET">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="お店を検索" aria-label="お店を検索" aria-describedby="button-addon2" name="keyword">
