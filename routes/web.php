@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\TopController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,8 @@ use App\Http\Controllers\StoreController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/', [TopController::class, 'index']);
 
 Route::resource('stores', StoreController::class)->middleware(['auth', 'verified']);
 Auth::routes(['verify' => true]);

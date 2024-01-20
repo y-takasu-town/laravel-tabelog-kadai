@@ -1,0 +1,20 @@
+/* public/css/styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.top-container {
+    background-image: url('{{ asset('images/nagoya-bg.jpg') }}');
+    background-size: cover;
+    background-position: center;
+    color: #fff; /* テキストの色を白に設定 */
+    padding: 100px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* テキストに影を追加 */
+}
+
+.btn-primary {
+    background-color: #FF6347; /* ボタンの背景色を赤味噌色に設定 */
+    border-color: #FF6347;
+}
