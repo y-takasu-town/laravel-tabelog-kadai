@@ -32,5 +32,4 @@
 @endsection
 
 @section('js')
-
 @endsection

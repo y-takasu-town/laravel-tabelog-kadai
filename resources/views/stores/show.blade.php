@@ -1,3 +1,11 @@
+@extends('layouts.app')
+
+@section('css')
+<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+@endsection
+
+@section('content')
+
 <div>
     <h2>{{$store->name}}</h2>
 </div>
@@ -81,3 +89,7 @@
         <button type="submit">レビューを追加</button>
     </form>
 @endauth
+@endsection
+
+@section('js')
+@endsection
