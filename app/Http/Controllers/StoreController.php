@@ -14,13 +14,8 @@ class StoreController extends Controller
      */
     public function index(Request $request)
     {
-        // nameを曖昧検索
-        $stores = Store::where('name', 'like', '%' . $request->name . '%')
-            // categoryを検索
-            ->where('category_id', $request->category_id)
-            // ->orWhere('category_id', $request->category_id)
-            ->get();
-
+        $stores = Store ::all();
+        
         return view('stores.index', compact('stores'));    
     }
 
@@ -53,8 +48,9 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
-        //
-    }
+        $reviews = $store->reviews()->get();
+  
+        return view('stores.show', compact('store', 'reviews'));    }
 
     /**
      * Show the form for editing the specified resource.
