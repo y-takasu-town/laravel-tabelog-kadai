@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StoreController extends Controller
 {
@@ -15,7 +16,7 @@ class StoreController extends Controller
     public function index(Request $request)
     {
         $stores = Store ::all();
-        
+
         return view('stores.index', compact('stores'));    
     }
 
@@ -50,7 +51,8 @@ class StoreController extends Controller
     {
         $reviews = $store->reviews()->get();
   
-        return view('stores.show', compact('store', 'reviews'));    }
+        return view('stores.show', compact('store', 'reviews'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -84,5 +86,12 @@ class StoreController extends Controller
     public function destroy(Store $store)
     {
         //
+    }
+
+    public function favorite(Store $store)
+    {
+        Auth::user()->togglefavorite($store);
+
+        return back();
     }
 }

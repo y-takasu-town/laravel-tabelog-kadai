@@ -88,6 +88,19 @@
         <input type="hidden" name="store_id" value="{{$store->id}}">
         <button type="submit">レビューを追加</button>
     </form>
+
+    @if($store->isFavoritedBy(Auth::user()))
+    <a href="{{ route('stores.favorite', $store) }}" class="btn nagoyameshi-favorite-button text-favorite w-100">
+        <i class="fa fa-heart"></i>
+        お気に入り解除
+    </a>
+    @else
+    <a href="{{ route('stores.favorite', $store) }}" class="btn nagoyameshi-favorite-button text-favorite w-100">
+        <i class="fa fa-heart"></i>
+        お気に入り
+    </a>
+    @endif
+
 @endauth
 @endsection
 
