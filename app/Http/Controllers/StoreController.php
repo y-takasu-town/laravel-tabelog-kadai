@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Favorite;
 
 class StoreController extends Controller
 {
@@ -90,8 +91,21 @@ class StoreController extends Controller
 
     public function favorite(Store $store)
     {
-        Auth::user()->togglefavorite($store);
+        $favorite = Favorite::where('user_id', Auth::user()->id)->where('store_id', $store->id)->first();
 
-        return back();
+        if (empty($favorite)) {
+            $favorite = new Favorite();
+            $favorite->user_id = Auth::user()->id;
+            $favorite->store_id = $store->id;
+            $favorite->save();
+
+            $message = 'お気に入り登録しました';
+        } else {
+            $favorite->delete();
+
+            $message = 'お気に入り登録を解除しました';
+        }
+
+        return back()->with('success', $message);
     }
 }

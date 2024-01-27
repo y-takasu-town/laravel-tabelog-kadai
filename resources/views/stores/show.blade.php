@@ -89,7 +89,7 @@
         <button type="submit">レビューを追加</button>
     </form>
 
-    @if($store->isFavoritedBy(Auth::user()))
+    @if(Auth::user()->favorites->contains($store->id))
     <a href="{{ route('stores.favorite', $store) }}" class="btn nagoyameshi-favorite-button text-favorite w-100">
         <i class="fa fa-heart"></i>
         お気に入り解除

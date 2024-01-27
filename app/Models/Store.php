@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Overtrue\LaravelFavorite\Traits\Favoriteable;
 
 class Store extends Model
 {
-    use HasFactory, Favoriteable;
+    use HasFactory;
 
     protected  $fillable = [
         'name',
@@ -31,5 +30,10 @@ class Store extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
     }
 }
