@@ -24,7 +24,8 @@ Route::get('/', function () {
 Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
 Route::get('/', [TopController::class, 'index']);
-Route::post('stores/{store}/favorite', [StoreController::class, 'favorite'])->name('stores.favorite');
+
+Route::get('stores/{store}/favorite', [StoreController::class, 'favorite'])->name('stores.favorite');
 Route::resource('stores', StoreController::class)->middleware(['auth', 'verified']);
 // Auth::routes(['verify' => true]);
 Auth::routes();

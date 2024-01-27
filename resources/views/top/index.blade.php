@@ -16,7 +16,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <select class="form-select" aria-label="Default select example" name="category_id">
-                            <option selected>カテゴリーを選択</option>
+                            <option selected value="">カテゴリーを選択</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach

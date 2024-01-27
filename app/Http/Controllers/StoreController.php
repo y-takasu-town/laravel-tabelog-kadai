@@ -6,6 +6,7 @@ use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Favorite;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class StoreController extends Controller
 {
@@ -16,9 +17,26 @@ class StoreController extends Controller
      */
     public function index(Request $request)
     {
-        $stores = Store ::all();
+        // カテゴリーIDとキーワードが両方空の時、全ての店舗を取得する
+        // if(empty($request->category_id) && empty($request->keyword))
+        // {
 
-        return view('stores.index', compact('stores'));    
+        // } // カテゴリーIDが空の時、キーワードのあいまい検索をする
+        // elseif(empty($request->category_id))
+        // {
+        // 　// ①これをあいまい検索にする
+        //     $stores = Store::where('name', $request->keyword)->get();
+        // } // キーワードが空の時、カテゴリーIDで検索をかける
+        // elseif(empty($request->keyword))
+        // {
+        //     $stores = Store::where('category_id', $request->category_id)->get();
+        // } // カテゴリーIDとキーワード両方に値がある時、2つの条件で検索をかける 
+        // else
+        // {
+
+        // }
+
+        // return view('stores.index', compact('stores'));    
     }
 
     /**

@@ -90,17 +90,19 @@
     </form>
 
     
-    <form action="{{ route('stores.favorite', $store) }}" method="POST">
-        @csrf
-        <button type="submit" class="btn nagoyameshi-favorite-button text-favorite w-100">
+ 
+        @if(Auth::user()->favorites->contains($store->id))
+        <a href="{{ route('stores.favorite', $store) }}" class="btn nagoyameshi-favorite-button text-favorite w-100">
             <i class="fa fa-heart"></i>
-            @if(Auth::user()->favorites->contains($store->id))
-                お気に入り解除
-            @else
-                お気に入り
-            @endif
-        </button>
-    </form>
+            お気に入り解除
+        </a>    
+        @else
+        <a href="{{ route('stores.favorite', $store) }}" class="btn nagoyameshi-favorite-button text-favorite w-100">
+            <i class="fa fa-heart"></i>
+            お気に入り
+        </a>
+        @endif
+ 
 @endauth
 @endsection
 
