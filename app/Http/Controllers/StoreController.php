@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Store;
+use App\Models\Favorite;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Favorite;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class StoreController extends Controller
@@ -18,25 +19,31 @@ class StoreController extends Controller
     public function index(Request $request)
     {
         // カテゴリーIDとキーワードが両方空の時、全ての店舗を取得する
-        // if(empty($request->category_id) && empty($request->keyword))
-        // {
+        if(empty($request->category_id) && empty($request->keyword))
+          {
+            $stores = Store::all();
+            $categories = Category::all();
+          } 
+           // カテゴリーIDが空の時、キーワードのあいまい検索をする
+          elseif(empty($request->category_id))
+          {
+           // ①これをあいまい検索にする
+              $stores = Store::where('name','like','%{$request->keyword}%');
+              $categories = null;
+             } // キーワードが空の時、カテゴリーIDで検索をかける
+          elseif(empty($request->keyword))
+          {
+             $stores = null;
+             $categories = Category::find($request->category_id);
+           } 
+           // カテゴリーIDとキーワード両方に値がある時、2つの条件で検索をかける 
+          else
+          {
+            $stores = Store::where('category_id', $request->category_id)
+            ->where('name', 'like', '%{$request->keyword}%')
+            ->get();          }
 
-        // } // カテゴリーIDが空の時、キーワードのあいまい検索をする
-        // elseif(empty($request->category_id))
-        // {
-        // 　// ①これをあいまい検索にする
-        //     $stores = Store::where('name', $request->keyword)->get();
-        // } // キーワードが空の時、カテゴリーIDで検索をかける
-        // elseif(empty($request->keyword))
-        // {
-        //     $stores = Store::where('category_id', $request->category_id)->get();
-        // } // カテゴリーIDとキーワード両方に値がある時、2つの条件で検索をかける 
-        // else
-        // {
-
-        // }
-
-        // return view('stores.index', compact('stores'));    
+          return view('stores.index', compact('stores','categories'));    
     }
 
     /**
