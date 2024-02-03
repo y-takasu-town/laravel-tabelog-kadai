@@ -15,6 +15,10 @@
 <a href="{{route('mypage.edit_password')}}">パスワード変更</a>
 <br>
 
+<a href="{{route('mypage.favorite')}}">お気に入り表示</a>
+<br>
+
+
 @endsection
 
 @section('js')
