@@ -18,7 +18,8 @@ return new class extends Migration
             $table->dateTime('reserved_time');
             $table->integer('amount');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('store_id')->constrained()->cascadeOnDelete();            $table->timestamps();
+            $table->foreignId('store_id')->constrained()->cascadeOnDelete();
+            $table->timestamps();
         });
     }
 

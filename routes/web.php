@@ -30,7 +30,6 @@ Route::controller(UserController::class)->group(function () {
     Route::put('users/mypage/password', 'update_password')->name('mypage.update_password');  
     Route::get('users/mypage/favorite', 'favorite')->name('mypage.favorite');
 
-
 });
 
 Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
@@ -39,6 +38,9 @@ Route::get('/', [TopController::class, 'index']);
 
 Route::post('stores/{store}/favorite', [StoreController::class, 'favorite'])->name('stores.favorite');
 Route::resource('stores', StoreController::class)->middleware(['auth', 'verified']);
+
+Route::get('stores/{store}/reservation', [App\Http\Controllers\ReservationController::class, 'create'])->name('stores.reservation');
+Route::post('stores/{store}/reservation', [App\Http\Controllers\ReservationController::class, 'store'])->name('stores.reservation.save');
 // Auth::routes(['verify' => true]);
 Auth::routes();
 

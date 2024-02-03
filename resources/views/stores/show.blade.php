@@ -60,6 +60,8 @@
     {{$store->holiday}} 
 </div>
 
+<a href="{{route('stores.reservation', $store)}}">予約へ</a>
+
 <hr>
 <h3>カスタマーレビュー</h3>
 @foreach($reviews as $review)
