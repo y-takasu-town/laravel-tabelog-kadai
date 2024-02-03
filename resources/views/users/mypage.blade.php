@@ -12,6 +12,9 @@
 <a href="{{route('mypage.edit')}}">会員情報の編集</a>
 <br>
 
+<a href="{{route('mypage.edit_password')}}">パスワード変更</a>
+<br>
+
 @endsection
 
 @section('js')
