@@ -20,30 +20,30 @@ class StoreController extends Controller
     {
         // カテゴリーIDとキーワードが両方空の時、全ての店舗を取得する
         if(empty($request->category_id) && empty($request->keyword))
-          {
+        {
             $stores = Store::all();
-            $categories = Category::all();
-          } 
-           // カテゴリーIDが空の時、キーワードのあいまい検索をする
-          elseif(empty($request->category_id))
-          {
+        }
+        // カテゴリーIDが空の時、キーワードのあいまい検索をする
+        elseif(empty($request->category_id))
+        {
            // ①これをあいまい検索にする
-              $stores = Store::where('name','like','%{$request->keyword}%');
-              $categories = null;
-             } // キーワードが空の時、カテゴリーIDで検索をかける
-          elseif(empty($request->keyword))
-          {
-             $stores = null;
-             $categories = Category::find($request->category_id);
-           } 
-           // カテゴリーIDとキーワード両方に値がある時、2つの条件で検索をかける 
-          else
-          {
+            $stores = Store::where('name','like','%{$request->keyword}%')->get();
+        } // キーワードが空の時、カテゴリーIDで検索をかける
+        elseif(empty($request->keyword))
+        {
+            $stores = Store::where('category_id', $request->category_id)->get();
+        } 
+        // カテゴリーIDとキーワード両方に値がある時、2つの条件で検索をかける 
+        else
+        {
             $stores = Store::where('category_id', $request->category_id)
             ->where('name', 'like', '%{$request->keyword}%')
-            ->get();          }
+            ->get();
+        }
 
-          return view('stores.index', compact('stores','categories'));    
+        $categories = Category::all();
+
+        return view('stores.index', compact('stores','categories'));    
     }
 
     /**
