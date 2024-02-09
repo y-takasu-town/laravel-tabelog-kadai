@@ -34,7 +34,8 @@
           </li>
           @else
           <li class="nav-item mr-5">
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              <i class="bi bi-door-closed-fill"></i>
               ログアウト
             </a>
             <br>

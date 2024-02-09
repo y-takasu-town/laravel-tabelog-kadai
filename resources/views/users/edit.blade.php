@@ -12,7 +12,7 @@
     @csrf
     <input type="hidden" name="_method" value="PUT">
         <label for="name" class="">氏名</label>
-            <input id="name" type="text" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus placeholder="侍 太郎">
+            <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus placeholder="侍 太郎">
             @error('name')
             <span class="invalid-feedback" role="alert">
                 <strong>氏名を入力してください</strong>

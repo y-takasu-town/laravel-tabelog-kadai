@@ -14,11 +14,9 @@
 
 @foreach ($favorites as $fav)
 <a href="{{route('stores.show', $fav->store_id)}}">
-店舗詳細
+<h5>{{ $fav->store->name }}</h5>
 </a>
-
-<h5 class="">{{ $fav->store->name }}</h5>
-<h6 class="">&yen;{{ $fav->store->price_range}}</h6>
+<h6>&yen;{{ $fav->store->price_range}}</h6>
 
 <form action="{{route('stores.favorite', $fav->store_id)}}" method="POST">
    @csrf
@@ -26,8 +24,8 @@
       お気に入り解除
    </button>
 </form>
- 
-
+<hr> 
 @endforeach
+
 
 @endsection
