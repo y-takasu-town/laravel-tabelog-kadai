@@ -35,17 +35,16 @@
           @else
           <li class="nav-item mr-5">
             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              <i class="bi bi-door-closed-fill"></i>
-              ログアウト
+              <i class="fa-solid fa-house"></i>ログアウト
             </a>
-            <br>
-            <a href="{{route('mypage')}}">
-              マイページ
-            </a>
-  
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               @csrf
             </form>
+          </li>
+          <li class="nav-item mr-5">
+            <a href="{{route('mypage')}}" class="nav-link">
+              <i class="fa-solid fa-house"></i> マイページ
+            </a>
           </li>
           @endguest
         </ul>

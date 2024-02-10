@@ -18,6 +18,7 @@
     <script src="https://kit.fontawesome.com/6b575be985.js" crossorigin="anonymous"></script>
 
     <!-- Styles -->
+    <link href="https://use.fontawesome.com/releases/v6.2.0/css/all.css" rel="stylesheet">
     <link href="{{ asset('css/nagoyameshi.css') }}" rel="stylesheet">
 
     @yield('css')
@@ -30,7 +31,7 @@
 
         <main class="py-4 mb-5">
             @yield('content')
-        </main>
+        </main> 
 
         @component('components.footer')
         @endcomponent
