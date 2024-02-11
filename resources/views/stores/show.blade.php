@@ -10,11 +10,6 @@
     <h2>{{$store->name}}</h2>
 </div>
 
-
-<div>
-    <a href="{{ route('stores.index') }}"> 戻る</a>
-</div>
-
 @if ($store->image)
 <img src="{{ asset($store->image) }}" class="img-thumbnail">
 @else

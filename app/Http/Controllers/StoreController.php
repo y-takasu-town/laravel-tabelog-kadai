@@ -30,7 +30,7 @@ class StoreController extends Controller
         elseif(empty($request->category_id))
         {
            // ①これをあいまい検索にする
-            $stores = Store::where('name','like','%{$request->keyword}%')->get();
+            $stores = Store::where('name','like',"%{$request->keyword}%")->get();
         } // キーワードが空の時、カテゴリーIDで検索をかける
         elseif(empty($request->keyword))
         {
@@ -40,7 +40,7 @@ class StoreController extends Controller
         else
         {
             $stores = Store::where('category_id', $request->category_id)
-            ->where('name', 'like', '%{$request->keyword}%')
+            ->where('name', 'like', "%{$request->keyword}%")
             ->get();
         }
 
