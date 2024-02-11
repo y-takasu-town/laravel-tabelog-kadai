@@ -18,20 +18,25 @@
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ms-auto mr-5 mt-2">
           <!-- Authentication Links -->
+          <li class="nav-item mr-5">
+            <a href="{{route('company')}}" class="nav-link">
+              <i class="fa-solid fa-building"></i> 会社情報
+            </a>
+          </li>
           @guest
           <li class="nav-item mr-5">
-            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+            <a class="nav-link" href="{{ route('register') }}">
+              <i class="fa-solid fa-address-card"></i>
+              {{ __('Register') }}
+            </a>
           </li>
           <li class="nav-item mr-5">
-            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+            <a class="nav-link" href="{{ route('login') }}">
+              <i class="fa-solid fa-right-to-bracket"></i>
+              {{ __('Login') }}
+            </a>
           </li>
           <hr>
-          <li class="nav-item mr-5">
-            <a class="nav-link" href="{{ route('login') }}"><i class="far fa-heart"></i></a>
-          </li>
-          <li class="nav-item mr-5">
-            <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-shopping-cart"></i></a>
-          </li>
           @else
           <li class="nav-item mr-5">
             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
