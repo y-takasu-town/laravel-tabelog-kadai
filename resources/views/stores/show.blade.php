@@ -16,9 +16,9 @@
 </div>
 
 @if ($store->image)
-<img src="{{ asset($store->image) }}" class="w-50 img-fluid">
+<img src="{{ asset($store->image) }}" class="img-thumbnail">
 @else
-<img src="{{ asset('img/dummy.png')}}" class="w-50 img-fluid">
+<img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
 @endif
 
 <div>

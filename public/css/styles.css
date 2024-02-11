@@ -19,3 +19,8 @@ body {
     background-color: #9b1e08; /* ボタンの背景色を赤味噌色に設定 */
     border-color: #9b1e08;
 }
+
+.img-thumbnail {
+    width: 200px;
+    height: 200px;
+}
