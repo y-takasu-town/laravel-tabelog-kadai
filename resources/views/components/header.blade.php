@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light shadow-sm nagoyameshi-header-container">
     <div class="container">
-      <a class="navbar-brand" href="{{ url('/') }}">
+      <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
         <img src="{{asset('img/logo.jpg')}}" class="img-logo">
         {{ config('app.name', 'Laravel') }}
     </a>
@@ -35,7 +35,7 @@
           @else
           <li class="nav-item mr-5">
             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              <i class="fa-solid fa-house"></i>ログアウト
+              <i class="fa-solid fa-right-from-bracket"></i>ログアウト
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               @csrf
@@ -43,7 +43,7 @@
           </li>
           <li class="nav-item mr-5">
             <a href="{{route('mypage')}}" class="nav-link">
-              <i class="fa-solid fa-house"></i> マイページ
+              <i class="fa-solid fa-user"></i> マイページ
             </a>
           </li>
           @endguest

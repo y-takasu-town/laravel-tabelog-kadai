@@ -22,6 +22,7 @@ class Store extends Model
         'address',
         'phone_number',
         'holiday',
+        'image',
     ];
 
     public function category()

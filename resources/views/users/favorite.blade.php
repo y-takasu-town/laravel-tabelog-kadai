@@ -16,7 +16,6 @@
 <a href="{{route('stores.show', $fav->store_id)}}">
 <h5>{{ $fav->store->name }}</h5>
 </a>
-<h6>&yen;{{ $fav->store->price_range}}</h6>
 
 <form action="{{route('stores.favorite', $fav->store_id)}}" method="POST">
    @csrf

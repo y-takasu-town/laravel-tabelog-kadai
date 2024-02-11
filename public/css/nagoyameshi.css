@@ -21,7 +21,6 @@
   }
   
   h1 {
-    font-family: YuGo;
     font-size: 26px;
     font-weight: bold;
     font-stretch: normal;
@@ -31,7 +30,6 @@
   }
   
   h2 {
-    font-family: YuGo;
     font-size: 22px;
     font-weight: bold;
     font-stretch: normal;
@@ -41,7 +39,6 @@
   }
   
   h3 {
-    font-family: YuGo;
     font-size: 18px;
     font-weight: bold;
     font-stretch: normal;
@@ -61,7 +58,6 @@
   }
   
   body {
-    font-family: YuGo;
     font-size: 14px;
     font-weight: 500;
     font-stretch: normal;
@@ -71,7 +67,6 @@
   }
   
   caption {
-    font-family: YuGo;
     font-size: 12px;
     font-weight: 500;
     font-stretch: normal;
@@ -81,7 +76,6 @@
   }
   
   label {
-    font-family: YuGo;
     font-size: 14px;
     font-weight: bold;
     font-stretch: normal;
