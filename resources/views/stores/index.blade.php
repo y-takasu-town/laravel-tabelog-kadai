@@ -11,13 +11,14 @@
 @section('content')
 
     <form>
+        @csrf
         <select name="category_id">
             <option disabled selected value>カテゴリを選択</option>
             @foreach($categories as $category)
                 <option value="{{ $category->id}}">{{ $category->name}}</option>
             @endforeach
         </select>
-        <input type="name" name="name">
+        <input type="text" name="keyword">
         <button type="submit">検索</button>
     </form>
 

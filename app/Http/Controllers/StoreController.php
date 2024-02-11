@@ -18,6 +18,9 @@ class StoreController extends Controller
      */
     public function index(Request $request)
     {
+        $keyword=$request->keyword;
+
+
         // カテゴリーIDとキーワードが両方空の時、全ての店舗を取得する
         if(empty($request->category_id) && empty($request->keyword))
         {

@@ -11,6 +11,7 @@
                 <h1 class="display-3">NAGOYA MESHI</h1>
                 <p class="lead">名古屋の味を、見つけよう。</p>
                 <form action="{{ route('stores.index') }}" method="GET">
+                    @csrf
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="お店を検索" aria-label="お店を検索" aria-describedby="button-addon2" name="keyword">
                     </div>
