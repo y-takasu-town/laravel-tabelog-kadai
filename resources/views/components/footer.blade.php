@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm mt-5">
-    <a class="navbar-brand mx-auto" href="{{ url('/') }}">
-        <img src="{{asset('img/logo.jpg')}}" class="img-fruid">
-        {{ config('app.name', 'Laravel') }}
+<nav class="navbar navbar-expand-md navbar-light bg-white">
+    <a class="navbar-brand d-flex justify-content-center align-items-center mx-auto" href="{{ url('/') }}">
+        <img src="{{asset('img/logo.jpg')}}" class="img-logo">
+        <span class="m1-2">{{ config('app.name', 'Laravel') }}</span>
     </a>
 </nav>

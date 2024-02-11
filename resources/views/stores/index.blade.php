@@ -30,6 +30,12 @@
     @foreach ($stores as $store)
     <div class="my-5">
         <a href="{{route('stores.show',$store)}}">{{ $store->name }}</a><br>
+        @if ($store->image !== "")
+        <img src="{{ asset($store->image) }}" class="img-thumbnail">
+        @else
+        <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
+        @endif
+        <br>
         {{ $store->category->name }}<br>
         {{ $store->discription }}<br>
         {{ $store->address }}<br>

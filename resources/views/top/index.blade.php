@@ -6,10 +6,10 @@
 
 @section('content')
     <div class="container-fluid top-container">
-        <div class="row">
-            <div class="col-md-4 text-center mx-auto">
-                <h1 class="display-3">NAGOYAMESHI</h1>
-                <p class="lead">名古屋のB級グルメを、探そう。</p>
+        <div class="row justify-content-center align-items-center" style="height: 70vh">
+            <div class="col-md-6 text-center mx-auto">
+                <h1 class="display-3">NAGOYA MESHI</h1>
+                <p class="lead">名古屋の味を、見つけよう。</p>
                 <form action="{{ route('stores.index') }}" method="GET">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="お店を検索" aria-label="お店を検索" aria-describedby="button-addon2" name="keyword">

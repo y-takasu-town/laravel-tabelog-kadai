@@ -12,8 +12,14 @@
 
 
 <div>
-    <a href="{{ route('stores.index') }}"> Back</a>
+    <a href="{{ route('stores.index') }}"> 戻る</a>
 </div>
+
+@if ($store->image)
+<img src="{{ asset($store->image) }}" class="w-50 img-fluid">
+@else
+<img src="{{ asset('img/dummy.png')}}" class="w-50 img-fluid">
+@endif
 
 <div>
     <strong>店舗名:</strong>
@@ -60,7 +66,7 @@
     {{$store->holiday}} 
 </div>
 
-<a href="{{route('stores.reservation', $store)}}">予約へ</a>
+<a href="{{route('stores.reservation', $store)}}">予約</a>
 
 <hr>
 <h3>カスタマーレビュー</h3>
