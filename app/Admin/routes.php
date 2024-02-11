@@ -4,6 +4,7 @@ use Illuminate\Routing\Router;
 use App\Admin\Controllers\CategoryController;
 use App\Admin\Controllers\StoreController;
 use App\Admin\Controllers\CompanyController;
+use App\Admin\Controllers\UserController;
 
 
 Admin::routes();
@@ -19,5 +20,6 @@ Route::group([
     $router->resource('categories', CategoryController::class);
     $router->resource('stores', StoreController::class);
     $router->resource('company', CompanyController::class);
+    $router->resource('users', UserController::class);
 
 });
