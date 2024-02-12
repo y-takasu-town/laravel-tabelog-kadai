@@ -32,7 +32,7 @@ class StoreController extends Controller
         // カテゴリーIDとキーワードが両方空の時、全ての店舗を取得する
         if(empty($request->category_id) && empty($request->keyword))
         {
-            $stores = Store::all();
+            $stores = Store::sortable($sort_query)->get();
         }
         // カテゴリーIDが空の時、キーワードのあいまい検索をする
         elseif(empty($request->category_id))
