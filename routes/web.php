@@ -6,6 +6,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ReservationController;
 
 
 /*
@@ -46,6 +47,6 @@ Route::get('stores/{store}/reservation', [App\Http\Controllers\ReservationContro
 Route::post('stores/{store}/reservation', [App\Http\Controllers\ReservationController::class, 'store'])->name('stores.reservation.save');
 // Auth::routes(['verify' => true]);
 Auth::routes();
-
+Route::post('mypage', [ReservationController::class, 'destroy'])->name('reservations.destroy');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

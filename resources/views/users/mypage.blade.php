@@ -43,6 +43,11 @@
                             {{ $reservation->store->name }}
                         </a>
                         <p>来店予定時間: {{ $reservation->reserved_time }}</p>
+                        <form action="{{route('reservations.destroy','$reservation')}}" method="post">
+                            @csrf
+                            <!-- @method('DELETE') -->
+                            <button type="submit">キャンセルする</button>
+                        </form>
                     </li>
                     @endforeach
                 </ul>
