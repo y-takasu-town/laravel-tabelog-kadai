@@ -5,63 +5,108 @@
 @endsection
 
 @section('content')
+<div class="container nagoyameshi-container pd-5">
+    <div class="row justify-content-center">
+        <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-10">
+            <h1 class=text-center>{{$store->name}}</h1>
 
-<div>
-    <h2>{{$store->name}}</h2>
-</div>
 
-@if ($store->image)
-<img src="{{ asset($store->image) }}" class="img-thumbnail">
-@else
-<img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
-@endif
+            @if ($store->image)
+                <img src="{{ asset($store->image) }}" class="w-100">
+            @else
+                <img src="{{ asset('img/dummy.png')}}" class="w-100">
+            @endif
 
-<div>
-    <strong>店舗名:</strong>
-    {{$store->name}}
-</div>
+            <div class="container">
+                <div class="row p-2 border-bottom">
+                    <div class="col-2">
+                        <span class="fw-bold">店舗名:</span>
+                    </div>
+                    <div class="col">
+                        <span>{{$store->name}}</span>
+                    </div>
+                </div>
 
-<div>
-    <strong>店舗説明:</strong>
-    {{$store->description}}
-</div>
+                <div class="row p-2 border-bottom">
+                    <div class="col-2">
+                        <span class="fw-bold">店舗説明:</span>
+                    </div>
+                    <div class="col">
+                    {{$store->description}}
+                    </div>
+                </div>
 
-<div>
-    <strong>開店時間:</strong>
-    {{$store->open_time}} 
-</div>
+                <div class="row p-2 border-bottom">
+                    <div class="col-2">
+                        <span class="fw-bold">開店時間:</span>
+                    </div>
+                    <div class="col">
+                        <span>{{$store->open_time}}<span>
+                    </div>
+                </div>
 
-<div>
-    <strong>閉店時間:</strong>
-    {{$store->close_time}} 
-</div>
+                <div class="row p-2 border-bottom">
+                    <div class="col-2">
+                        <span class="fw-bold">閉店時間:</span>
+                    </div>
+                    <div class="col">
+                        <span>{{$store->close_time}}</span> 
+                    </div>
+                </div>
 
-<div>
-    <strong>価格帯:</strong>
-    {{$store->price_range}} 
-</div>
+                <div class="row p-2 border-bottom">
+                    <div class="col-2">
+                        <span class="fw-bold">価格帯:</span>
+                    </div>
+                    <div class="col">
+                        <span>{{$store->price_range}}</span> 
+                    </div>
+                </div>
 
-<div>
-    <strong>郵便番号:</strong>
-    {{$store->postal_code}} 
-</div>
+                <div class="row p-2 border-bottom">
+                    <div class="col-2">
+                        <span class="fw-bold">郵便番号:</span>
+                    </div>
+                    <div class="col">
+                        <span>{{$store->postal_code}} </span>
+                    </div>
+                </div>
 
-<div>
-    <strong>住所:</strong>
-    {{$store->address}} 
-</div>
+                <div class="row p-2 border-bottom">
+                    <div class="col-2">
+                        <span class="fw-bold">住所:</span>
+                    </div>
+                    <div class="col">
+                        <span>{{$store->address}} </span>
+                    </div>
+                </div>
 
-<div>
-    <strong>電話番号:</strong>
-    {{$store->phone_number}} 
-</div>
+                <div class="row p-2 border-bottom">
+                    <div class="col-2">
+                        <span class="fw-bold">電話番号:</span>
+                    </div>
+                    <div class="col">
+                        <span>{{$store->phone_number}} </span>
+                    </div>
+                </div>
 
-<div>
-    <strong>休日:</strong>
-    {{$store->holiday}} 
-</div>
-
-<a href="{{route('stores.reservation', $store)}}">予約</a>
+                <div class="row p-2 border-bottom">
+                    <div class="col-2">
+                        <span class="fw-bold">休日:</span>
+                    </div>
+                    <div class="col">
+                        <span>{{$store->holiday}} </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group text-center">
+                <a href="{{route('stores.reservation', $store)}}">
+                    <button type="submit" class="mt-3 btn nagoyameshi-submit-button ">
+                        予約
+                    </button>
+                </a>
+            </div>
 
 <hr>
 <h3>カスタマーレビュー</h3>
@@ -94,19 +139,21 @@
     <form action="{{ route('stores.favorite', $store) }}" method="POST">
         @csrf
         @if(!empty(Auth::user()->favorites()->where('store_id', $store->id)->first()))
-        <button class="btn nagoyameshi-favorite-button text-favorite w-100">
+        <button class="btn nagoyameshi-favorite-button text-favorite w-20">
             <i class="fa fa-heart"></i>
             お気に入り解除
         </button>
         @else
-        <button  class="btn nagoyameshi-favorite-button text-favorite w-100">
+        <button  class="btn nagoyameshi-favorite-button text-favorite w-20">
             <i class="fa fa-heart"></i>
             お気に入り
         </button>
         @endif
     </form>
-
 @endauth
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('js')

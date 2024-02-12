@@ -25,4 +25,11 @@ class ReservationController extends Controller
 
         return redirect()->route('mypage')->with('message','予約が完了しました。');
     }
+
+    public function destroy(Reservation $reservation)
+    {
+        $reservation->delete();
+
+        return to_route('mypage')->with('message','予約をキャンセルしました。');
+    }
 }
