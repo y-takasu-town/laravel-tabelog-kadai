@@ -9,7 +9,9 @@
 
 
 @section('content')
-
+<div class="container nagoyameshi-container pd-5">
+    <div class="row justify-content-center">
+        <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-10">
     <form>
         @csrf
         <select name="category_id">
@@ -38,12 +40,14 @@
         @endif
         </a>
         <br>
-        {{ $store->category->name }}<br>
-        {{ $store->discription }}<br>
+        {{ $store->category->name }}<br> 
         {{ $store->address }}<br>
+        {{ $store->discription }}<br>
     </div>
     @endforeach
- 
+        </div>
+    </div>
+</div>
 @endsection
 
 

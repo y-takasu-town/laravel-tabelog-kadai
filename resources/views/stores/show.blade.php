@@ -32,7 +32,7 @@
                         <span class="fw-bold">店舗説明:</span>
                     </div>
                     <div class="col">
-                    {{$store->description}}
+                    {{$store->discription}}
                     </div>
                 </div>
 
@@ -109,18 +109,12 @@
             </div>
 
 <hr>
-<h3>カスタマーレビュー</h3>
-@foreach($reviews as $review)
-<h3>{{ str_repeat('★', $review->star) }}</h3>
-    <p>{{$review->comment}}</p>
-    <label>{{$review->created_at}} {{$review->user->name}}</label>
-@endforeach
-
 
 @auth
     <form method="POST" action="{{ route('reviews.store') }}">
+<br>
         @csrf
-        <h4>評価</h4>
+        <h5>評価</h5>
              <select name="star">
                  <option value="5">★★★★★</option>
                  <option value="4">★★★★</option>
@@ -128,23 +122,33 @@
                  <option value="2">★★</option>
                  <option value="1">★</option>
              </select>
-        <h4>レビュー内容</h4>
+             <br>
+             <br>
+        <h5>レビュー投稿をしてみよう</h5>
         @error('comment')
             <strong>レビュー内容を入力してください</strong>
         @enderror
-        <textarea name="comment"></textarea>
+        <textarea name="comment" rows="5" cols="70"></textarea>
         <input type="hidden" name="store_id" value="{{$store->id}}">
         <button type="submit">レビューを追加</button>
     </form>
+    <br>
+    <h5>カスタマーレビューを読んでみよう</h5>
+@foreach($reviews as $review)
+<h5><i class="fa-regular fa-user"></i>{{$review->user->name}}</h5>
+<h3>{{ str_repeat('★', $review->star) }}</h3>
+    <p>{{$review->comment}}</p>
+@endforeach
+
     <form action="{{ route('stores.favorite', $store) }}" method="POST">
         @csrf
         @if(!empty(Auth::user()->favorites()->where('store_id', $store->id)->first()))
-        <button class="btn nagoyameshi-favorite-button text-favorite w-20">
+        <button class="btn nagoyameshi-favorite-button text-favorite w-100">
             <i class="fa fa-heart"></i>
             お気に入り解除
         </button>
         @else
-        <button  class="btn nagoyameshi-favorite-button text-favorite w-20">
+        <button  class="btn nagoyameshi-favorite-button text-favorite w-100">
             <i class="fa fa-heart"></i>
             お気に入り
         </button>

@@ -25,7 +25,7 @@
                         <a href="{{route('mypage.edit_password')}}">パスワード変更</a>
                     </li>
                     <li>
-                        <a href="{{route('mypage.favorite')}}">お気に入り表示</a>
+                        <a href="{{route('mypage.favorite')}}">お気に入り一覧</a>
                     </li>
                 </ul>
             </div>
