@@ -25,7 +25,6 @@
     </form>
 
     <form method="GET" action="{{ route('stores.index')}}" class="form-inline">
-        並び替え
         <select name="sort" onChange="this.form.submit();" class="form-inline ml-2">
             @foreach ($sort as $key => $value)
                 @if ($sorted == $value)

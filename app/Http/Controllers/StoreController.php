@@ -38,26 +38,24 @@ class StoreController extends Controller
         elseif(empty($request->category_id))
         {
            // ①これをあいまい検索にする
-            $stores = Store::where('name','like',"%{$request->keyword}%")->get();
+            $stores = Store::where('name','like',"%{$request->keyword}%")->sortable($sort_query)->get();
         } // キーワードが空の時、カテゴリーIDで検索をかける
         elseif(empty($request->keyword))
         {
-            $stores = Store::where('category_id', $request->category_id)->get();
+            $stores = Store::where('category_id', $request->category_id)->sortable($sort_query)->get();
         } 
         // カテゴリーIDとキーワード両方に値がある時、2つの条件で検索をかける 
         else
         {
             $stores = Store::where('category_id', $request->category_id)
             ->where('name', 'like', "%{$request->keyword}%")
-            ->get();
+            ->sortable($sort_query)->get();
         }
 
         $sort = [
             '並び替え' => '', 
             '価格の安い順' => 'price_range asc',
             '価格の高い順' => 'price_range desc', 
-            '出品の古い順' => 'updated_at asc', 
-            '出品の新しい順' => 'updated_at desc'
         ];
 
         $categories = Category::all();
