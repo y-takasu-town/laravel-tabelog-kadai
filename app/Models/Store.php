@@ -26,7 +26,7 @@ class Store extends Model
     ];
 
     public $sortable = [
-        'price', 
+        'price_range', 
     ];
     
     public function category()
