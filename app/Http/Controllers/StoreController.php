@@ -20,6 +20,14 @@ class StoreController extends Controller
     {
         $keyword=$request->keyword;
 
+        $sort_query = [];
+        $sorted = "";
+
+        if ($request->sort !== null) {
+            $slices = explode(' ', $request->sort);
+            $sort_query[$slices[0]] = $slices[1];
+            $sorted = $request->sort;
+        }
 
         // カテゴリーIDとキーワードが両方空の時、全ての店舗を取得する
         if(empty($request->category_id) && empty($request->keyword))
@@ -44,9 +52,17 @@ class StoreController extends Controller
             ->get();
         }
 
+        $sort = [
+            '並び替え' => '', 
+            '価格の安い順' => 'price_range asc',
+            '価格の高い順' => 'price_range desc', 
+            '出品の古い順' => 'updated_at asc', 
+            '出品の新しい順' => 'updated_at desc'
+        ];
+
         $categories = Category::all();
 
-        return view('stores.index', compact('stores','categories'));    
+        return view('stores.index', compact('stores', 'categories','sort',  'sorted'));
     }
 
     /**

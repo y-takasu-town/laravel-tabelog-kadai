@@ -24,10 +24,18 @@
         <button type="submit">検索</button>
     </form>
 
-    <div>
-        Sort By
-        @sortablelink('price_range', '価格帯')
-    </div>
+    <form method="GET" action="{{ route('stores.index')}}" class="form-inline">
+        並び替え
+        <select name="sort" onChange="this.form.submit();" class="form-inline ml-2">
+            @foreach ($sort as $key => $value)
+                @if ($sorted == $value)
+                   <option value=" {{ $value}}" selected>{{ $key }}</option>
+                @else
+                   <option value=" {{ $value}}">{{ $key }}</option>
+                @endif
+            @endforeach
+        </select>
+    </form>
 
 
     @foreach ($stores as $store)
