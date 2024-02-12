@@ -28,8 +28,10 @@ class ReservationController extends Controller
 
     public function destroy(Reservation $reservation)
     {
-        
-        $reservation->delete();
+
+        $reservation = Reservation::where("store_id", "$reservation->request_id")
+        ->where("user_id", Auth::id())
+        ->delete();
 
         return redirect()->back()->with('message','予約をキャンセルしました。');
     }
