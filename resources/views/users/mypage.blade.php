@@ -52,29 +52,28 @@
         </div>
 
         @if (Auth::user()->subscribed('default'))
-
-        <div class="card mt-5">
-            <div class="card-header">
-                ご予約履歴
+            <div class="card mt-5">
+                <div class="card-header">
+                    ご予約履歴
+                </div>
+                <div class="card-body">
+                    <ul>
+                        @foreach (Auth::user()->reservations as $reservation)
+                            <li>
+                                <a href="{{route('stores.show', $reservation->store_id)}}">
+                                    {{ $reservation->store->name }}
+                                </a>
+                                <p>来店予定時間: {{ $reservation->reserved_time }}</p>
+                                <form action="{{route('reservations.destroy','$reservation')}}" method="post">
+                                    @csrf
+                                    <!-- @method('DELETE') -->
+                                    <button type="submit">キャンセルする</button>
+                                </form>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
-            <div class="card-body">
-                <ul>
-                    @foreach (Auth::user()->reservations as $reservation)
-                    <li>
-                        <a href="{{route('stores.show', $reservation->store_id)}}">
-                            {{ $reservation->store->name }}
-                        </a>
-                        <p>来店予定時間: {{ $reservation->reserved_time }}</p>
-                        <form action="{{route('reservations.destroy','$reservation')}}" method="post">
-                            @csrf
-                            <!-- @method('DELETE') -->
-                            <button type="submit">キャンセルする</button>
-                        </form>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
         @endif
     </div>
 </div>
