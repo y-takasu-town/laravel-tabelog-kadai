@@ -37,10 +37,10 @@
             <div class="card-body">
                 <ul>
                     <li>
-                        <a href="{{route('mypage.edit')}}">会員情報の編集</a>
+                        <a href="{{route('subscription')}}">有料会員登録</a>
                     </li>
                     <li>
-                        <a href="{{route('subscription')}}">有料会員登録</a>
+                        <a href="{{route('mypage.edit')}}">会員情報の編集</a>
                     </li>
                     <li>
                         <a href="{{route('mypage.edit_password')}}">パスワード変更</a>
