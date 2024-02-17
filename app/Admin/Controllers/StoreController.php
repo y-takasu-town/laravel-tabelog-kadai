@@ -27,19 +27,19 @@ class StoreController extends AdminController
     {
         $grid = new Grid(new Store());
 
-        $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
+        $grid->column('id', __('Id'))->sortable();
+        $grid->column('name', __('Name'))->sortable();
         $grid->column('category.name', __('Category Name'));
         $grid->column('image', __('Image'))->image();        $grid->column('discription', __('Discription'));
         $grid->column('open_time', __('Open time'));
         $grid->column('close_time', __('Close time'));
-        $grid->column('price_range', __('Price range'));
+        $grid->column('price_range', __('Price range'))->sortable();
         $grid->column('postal_code', __('Postal code'));
         $grid->column('address', __('Address'));
         $grid->column('phone_number', __('Phone number'));
         $grid->column('holiday', __('Holiday'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('created_at', __('Created at'))->sortable();
+        $grid->column('updated_at', __('Updated at'))->sortable();
 
         return $grid;
     }
