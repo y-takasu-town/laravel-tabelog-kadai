@@ -14,21 +14,21 @@
                 <hr>
 
                 @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                 @endif
 
                 <form method="POST" action="{{ route('password.email') }}">
-                    @csrf
+                @csrf
 
                     <div class="form-group">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror nagoyameshi-login-input" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="メールアドレス">
 
                         @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>メールアドレスが正しくない可能性があります。</strong>
-                        </span>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>メールアドレスが正しくない可能性があります。</strong>
+                            </span>
                         @enderror
                     </div>
 

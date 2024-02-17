@@ -174,4 +174,3 @@
 
 @section('js')
 @endsection
-

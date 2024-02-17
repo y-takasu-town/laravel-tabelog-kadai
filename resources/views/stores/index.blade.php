@@ -24,27 +24,27 @@
                     <select name="sort" onChange="this.form.submit();" class="form-inline ml-2">
                         @foreach ($sort as $key => $value)
                             @if ($sorted == $value)
-                            <option value=" {{ $value}}" selected>{{ $key }}</option>
+                                <option value=" {{ $value}}" selected>{{ $key }}</option>
                             @else
-                            <option value=" {{ $value}}">{{ $key }}</option>
+                                <option value=" {{ $value}}">{{ $key }}</option>
                             @endif
                         @endforeach
                     </select>
                 </form>
 
                 @foreach ($stores as $store)
-                <div class="my-5">
-                    <a href="{{route('stores.show',$store)}}">{{ $store->name }}<br>
-                        @if ($store->image !== "")
-                            <img src="{{ asset($store->image) }}" class="img-thumbnail">
-                        @else
-                            <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
-                        @endif
-                    </a><br>
-                        {{ $store->category->name }}<br> 
-                        {{ $store->address }}<br>
-                        {{ $store->discription }}<br>
-                </div>
+                    <div class="my-5">
+                        <a href="{{route('stores.show',$store)}}">{{ $store->name }}<br>
+                            @if ($store->image !== "")
+                                <img src="{{ asset($store->image) }}" class="img-thumbnail">
+                            @else
+                                <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
+                            @endif
+                        </a><br>
+                            {{ $store->category->name }}<br> 
+                            {{ $store->address }}<br>
+                            {{ $store->discription }}<br>
+                    </div>
                 @endforeach
             </div>
         </div>
