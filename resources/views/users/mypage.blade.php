@@ -14,6 +14,24 @@
     <div class="col-md-6 mx-auto">
         <div class="card">
             <div class="card-header">
+                会員ステータス
+            </div>
+            <div class="card-body">
+                @if (Auth::user()->subscribed('default') && Auth::user()->subscription('default')->onGracePeriod() && empty(Auth::user()->subscription('default')->ends_at))
+                <form method="POST" action="{{route('stripe.cancel') }}">
+                    @csrf
+                    <button class="btn btn-danger">プレミアム会員を解約する</button>
+                </form>
+                @elseif (Auth::user()->subscribed('default') && Auth::user()->subscription('default')->onGracePeriod() && !empty(Auth::user()->subscription('default')->ends_at))
+                <p>プレミアム会員を解約しました。{{ Auth::user()->subscription('default')->ends_at->format('Y年m月d日') }}までご利用いただけます。</p>
+                @else
+                <p>プレミアム会員になると、お気に入り機能やお店のレビューができます。</p>
+                <a class="btn btn-primary" href="{{ route('subscription') }}">プレミアム会員になる</a>
+                @endif
+            </div>
+        </div>
+        <div class="card mt-5">
+            <div class="card-header">
                 マイページ
             </div>
             <div class="card-body">
@@ -24,12 +42,16 @@
                     <li>
                         <a href="{{route('mypage.edit_password')}}">パスワード変更</a>
                     </li>
+                    @if (Auth::user()->subscribed('default'))
                     <li>
                         <a href="{{route('mypage.favorite')}}">お気に入り一覧</a>
                     </li>
+                    @endif
                 </ul>
             </div>
         </div>
+
+        @if (Auth::user()->subscribed('default'))
 
         <div class="card mt-5">
             <div class="card-header">
@@ -53,6 +75,7 @@
                 </ul>
             </div>
         </div>
+        @endif
     </div>
 </div>
 

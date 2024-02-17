@@ -7,6 +7,7 @@ use App\Http\Controllers\TopController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\SubscriptionController;
 
 
 /*
@@ -50,3 +51,7 @@ Auth::routes();
 Route::post('mypage', [ReservationController::class, 'destroy'])->name('reservations.destroy');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/subscription', [SubscriptionController::class, 'index'])->name('subscription')->middleware('auth');
+Route::post('/subscription/payment', [SubscriptionController::class, 'store'])->name('stripe.store')->middleware('auth');
+Route::post('/subscription/cancel/', [SubscriptionController::class,'cancelsubscription'])->name('stripe.cancel');

@@ -11,6 +11,10 @@ class ReservationController extends Controller
 {
     public function create(Store $store)
     {
+        if (!Auth::user()->subscribed('default'))
+        {
+            return redirect()->route('subscription')->with('message','予約機能はプレミアム会員限定です。プレミアム会員になりましょう。');
+        }
         return view('reservations.create', compact('store'));
     }
 

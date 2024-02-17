@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="https://use.fontawesome.com/releases/v6.2.0/css/all.css" rel="stylesheet">
+    <link href="{{ asset('css/stripe.css') }}" rel="stylesheet">
     <link href="{{ asset('css/nagoyameshi.css') }}" rel="stylesheet">
 
     @yield('css')

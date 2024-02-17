@@ -8,6 +8,11 @@
 <div class="container nagoyameshi-container pd-5">
     <div class="row justify-content-center">
         <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-10">
+            @if(session('success'))
+                <div class="alert alert-success mb-3">
+                {{ session('success') }}
+                </div>
+            @endif
             <h1 class=text-center>{{$store->name}}</h1>
 
 
@@ -101,16 +106,23 @@
             </div>
             
             <div class="form-group text-center">
+                @if (Auth::user()->subscribed('default'))
                 <a href="{{route('stores.reservation', $store)}}">
                     <button type="submit" class="mt-3 btn nagoyameshi-submit-button ">
                         予約
                     </button>
                 </a>
+                @else
+                    <button type="button" class="mt-3 btn nagoyameshi-submit-button disabled_button">
+                        予約
+                    </button>
+                @endif
             </div>
 
 <hr>
 
 @auth
+@if (Auth::user()->subscribed('default'))
     <form method="POST" action="{{ route('reviews.store') }}">
 <br>
         @csrf
@@ -132,14 +144,19 @@
         <input type="hidden" name="store_id" value="{{$store->id}}">
         <button type="submit">レビューを追加</button>
     </form>
+@endif
     <br>
     <h5>カスタマーレビューを読んでみよう</h5>
+    @if (!Auth::user()->subscribed('default'))
+    <a href="{{route('subscription')}}" class="btn btn-primary my-3">プレミアム会員になってレビューを投稿しよう</a>
+    @endif
 @foreach($reviews as $review)
 <h5><i class="fa-regular fa-user"></i>{{$review->user->name}}</h5>
 <h3>{{ str_repeat('★', $review->star) }}</h3>
     <p>{{$review->comment}}</p>
 @endforeach
 
+    @if (Auth::user()->subscribed('default'))
     <form action="{{ route('stores.favorite', $store) }}" method="POST">
         @csrf
         @if(!empty(Auth::user()->favorites()->where('store_id', $store->id)->first()))
@@ -154,6 +171,7 @@
         </button>
         @endif
     </form>
+    @endif
 @endauth
         </div>
     </div>
@@ -162,3 +180,4 @@
 
 @section('js')
 @endsection
+
