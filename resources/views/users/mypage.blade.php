@@ -25,8 +25,8 @@
                 @elseif (Auth::user()->subscribed('default') && Auth::user()->subscription('default')->onGracePeriod() && !empty(Auth::user()->subscription('default')->ends_at))
                     <p>プレミアム会員を解約しました。{{ Auth::user()->subscription('default')->ends_at->format('Y年m月d日') }}までご利用いただけます。</p>
                 @else
-                    <p>プレミアム会員になると、お気に入り機能やお店のレビューができます。</p>
-                    <a class="btn btn-primary" href="{{ route('subscription') }}">プレミアム会員になる</a>
+                    <p>プレミアム会員に登録すると、店舗予約やお気に入り機能、お店のレビュー投稿ができます。</p>
+                    <a class="btn btn-primary" href="{{ route('subscription') }}">プレミアム会員に登録する</a>
                 @endif
             </div>
         </div>
