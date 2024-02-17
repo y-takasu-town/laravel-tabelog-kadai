@@ -4,9 +4,6 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 @endsection
 
-@section('css')
-@endsection
-
 @section('content')
     <div class="container nagoyameshi-container pd-5">
         <div class="row justify-content-center">

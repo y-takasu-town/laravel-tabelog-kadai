@@ -142,7 +142,7 @@
                         <br>
                             <h5>カスタマーレビューを読んでみよう</h5>
                                 @if (!Auth::user()->subscribed('default'))
-                                    <a href="{{route('subscription')}}" class="btn btn-primary my-3">プレミアム会員になってレビューを投稿しよう</a>
+                                    <a href="{{route('subscription')}}" class="btn btn-primary my-3">有料会員になってレビューを投稿しよう</a>
                                 @endif
                                 @foreach($reviews as $review)
                                     <h5><i class="fa-regular fa-user"></i>{{$review->user->name}}</h5>

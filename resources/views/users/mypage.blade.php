@@ -20,13 +20,13 @@
                 @if (Auth::user()->subscribed('default') && Auth::user()->subscription('default')->onGracePeriod() && empty(Auth::user()->subscription('default')->ends_at))
                     <form method="POST" action="{{route('stripe.cancel') }}">
                         @csrf
-                            <button class="btn btn-danger">プレミアム会員を解約する</button>
+                            <button class="btn btn-danger">有料会員を解約する</button>
                     </form>
                 @elseif (Auth::user()->subscribed('default') && Auth::user()->subscription('default')->onGracePeriod() && !empty(Auth::user()->subscription('default')->ends_at))
-                    <p>プレミアム会員を解約しました。{{ Auth::user()->subscription('default')->ends_at->format('Y年m月d日') }}までご利用いただけます。</p>
+                    <p>有料会員を解約しました。{{ Auth::user()->subscription('default')->ends_at->format('Y年m月d日') }}までご利用いただけます。</p>
                 @else
-                    <p>プレミアム会員に登録すると、店舗予約やお気に入り機能、お店のレビュー投稿ができます。</p>
-                    <a class="btn btn-primary" href="{{ route('subscription') }}">プレミアム会員に登録する</a>
+                    <p>有料会員に登録すると、店舗予約やお気に入り機能、お店のレビュー投稿ができます。</p>
+                    <a class="btn btn-primary" href="{{ route('subscription') }}">有料会員に登録する</a>
                 @endif
             </div>
         </div>
@@ -38,6 +38,9 @@
                 <ul>
                     <li>
                         <a href="{{route('mypage.edit')}}">会員情報の編集</a>
+                    </li>
+                    <li>
+                        <a href="{{route('subscription')}}">有料会員登録</a>
                     </li>
                     <li>
                         <a href="{{route('mypage.edit_password')}}">パスワード変更</a>

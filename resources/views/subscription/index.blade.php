@@ -31,7 +31,7 @@
                                 
                                     <div id="card-errors" role="alert" style='color:red'></div>
                                 
-                                    <button class="btn btn-primary mt-4" id="card-button" data-secret="{{ $intent->client_secret }}">プレミアム会員に登録する</button>
+                                    <button class="btn btn-primary mt-4" id="card-button" data-secret="{{ $intent->client_secret }}">有料会員に登録する</button>
                                 
                                 </form>
                             </div>
