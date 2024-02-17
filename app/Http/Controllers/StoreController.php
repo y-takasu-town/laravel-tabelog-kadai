@@ -19,7 +19,6 @@ class StoreController extends Controller
     public function index(Request $request)
     {
         $keyword=$request->keyword;
-
         $sort_query = [];
         $sorted = "";
 
@@ -34,16 +33,19 @@ class StoreController extends Controller
         {
             $stores = Store::sortable($sort_query)->get();
         }
+
         // カテゴリーIDが空の時、キーワードのあいまい検索をする
         elseif(empty($request->category_id))
         {
-           // ①これをあいまい検索にする
             $stores = Store::where('name','like',"%{$request->keyword}%")->sortable($sort_query)->get();
-        } // キーワードが空の時、カテゴリーIDで検索をかける
+        } 
+        
+        // キーワードが空の時、カテゴリーIDで検索をかける
         elseif(empty($request->keyword))
         {
             $stores = Store::where('category_id', $request->category_id)->sortable($sort_query)->get();
         } 
+
         // カテゴリーIDとキーワード両方に値がある時、2つの条件で検索をかける 
         else
         {

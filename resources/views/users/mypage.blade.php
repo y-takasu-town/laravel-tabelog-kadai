@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('css')
-<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 @endsection
  
 @section('content')
 
 @if(session('message'))
-<div class="alert alert-success">{{session('message')}}</div>
+    <div class="alert alert-success">{{session('message')}}</div>
 @endif
 
 <div class="row">
@@ -18,15 +18,15 @@
             </div>
             <div class="card-body">
                 @if (Auth::user()->subscribed('default') && Auth::user()->subscription('default')->onGracePeriod() && empty(Auth::user()->subscription('default')->ends_at))
-                <form method="POST" action="{{route('stripe.cancel') }}">
-                    @csrf
-                    <button class="btn btn-danger">プレミアム会員を解約する</button>
-                </form>
+                    <form method="POST" action="{{route('stripe.cancel') }}">
+                        @csrf
+                            <button class="btn btn-danger">プレミアム会員を解約する</button>
+                    </form>
                 @elseif (Auth::user()->subscribed('default') && Auth::user()->subscription('default')->onGracePeriod() && !empty(Auth::user()->subscription('default')->ends_at))
-                <p>プレミアム会員を解約しました。{{ Auth::user()->subscription('default')->ends_at->format('Y年m月d日') }}までご利用いただけます。</p>
+                    <p>プレミアム会員を解約しました。{{ Auth::user()->subscription('default')->ends_at->format('Y年m月d日') }}までご利用いただけます。</p>
                 @else
-                <p>プレミアム会員になると、お気に入り機能やお店のレビューができます。</p>
-                <a class="btn btn-primary" href="{{ route('subscription') }}">プレミアム会員になる</a>
+                    <p>プレミアム会員になると、お気に入り機能やお店のレビューができます。</p>
+                    <a class="btn btn-primary" href="{{ route('subscription') }}">プレミアム会員になる</a>
                 @endif
             </div>
         </div>
@@ -42,11 +42,11 @@
                     <li>
                         <a href="{{route('mypage.edit_password')}}">パスワード変更</a>
                     </li>
-                    @if (Auth::user()->subscribed('default'))
+                        @if (Auth::user()->subscribed('default'))
                     <li>
                         <a href="{{route('mypage.favorite')}}">お気に入り一覧</a>
                     </li>
-                    @endif
+                        @endif
                 </ul>
             </div>
         </div>
@@ -78,7 +78,6 @@
         @endif
     </div>
 </div>
-
 
 @endsection
 

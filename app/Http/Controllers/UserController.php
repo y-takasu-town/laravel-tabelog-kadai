@@ -16,8 +16,6 @@ class UserController extends Controller
         return view('users.mypage', compact('user'));
     }
 
-   
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -72,7 +70,7 @@ class UserController extends Controller
             $user->password = bcrypt($request->input('password'));
             $user->update();
         } else {
-            return to_route('mypage.edit_password');
+        return to_route('mypage.edit_password');
         }
 
         return to_route('mypage')->with('message','パスワードを変更しました。');

@@ -13,7 +13,7 @@ class ReservationController extends Controller
     {
         if (!Auth::user()->subscribed('default'))
         {
-            return redirect()->route('subscription')->with('message','予約機能はプレミアム会員限定です。プレミアム会員になりましょう。');
+        return redirect()->route('subscription')->with('message','予約機能はプレミアム会員限定です。');
         }
         return view('reservations.create', compact('store'));
     }
@@ -32,7 +32,6 @@ class ReservationController extends Controller
 
     public function destroy(Reservation $reservation)
     {
-
         $reservation = Reservation::where("store_id", "$reservation->request_id")
         ->where("user_id", Auth::id())
         ->delete();
