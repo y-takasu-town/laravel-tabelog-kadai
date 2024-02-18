@@ -42,7 +42,10 @@
                     <li>
                         <a href="{{route('mypage.edit_password')}}">パスワード変更</a>
                     </li>
-                        @if (Auth::user()->subscribed('default'))
+                    @if (Auth::user()->subscribed('default'))
+                    <li>
+                        <a href="{{route('mypage.edit_card')}}">クレジットカード情報変更</a>
+                    </li>
                     <li>
                         <a href="{{route('mypage.favorite')}}">お気に入り一覧</a>
                     </li>
@@ -64,9 +67,9 @@
                                     {{ $reservation->store->name }}
                                 </a>
                                 <p>来店予定時間: {{ $reservation->reserved_time }}</p>
-                                <form action="{{route('reservations.destroy','$reservation')}}" method="post">
+                                <form action="{{route('reservations.destroy',$reservation)}}" method="post">
                                     @csrf
-                                    <!-- @method('DELETE') -->
+                                    @method('DELETE')
                                     <button type="submit">キャンセルする</button>
                                 </form>
                             </li>

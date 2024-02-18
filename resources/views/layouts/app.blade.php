@@ -30,6 +30,20 @@
             @component('components.header')
             @endcomponent
 
+            @if ($errors->any())
+            <div class="container py-3">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">                    
+                        @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger mt-3">
+                            {{ $error }}
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            @endif
+
             <main class="py-4 mb-5">
                 @yield('content')
             </main> 

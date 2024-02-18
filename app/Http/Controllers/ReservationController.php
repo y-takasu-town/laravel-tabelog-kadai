@@ -6,6 +6,7 @@ use App\Models\Store;
 use Illuminate\Http\Request;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ReservationController extends Controller
 {
@@ -13,13 +14,27 @@ class ReservationController extends Controller
     {
         if (!Auth::user()->subscribed('default'))
         {
-        return redirect()->route('subscription')->with('message','予約機能はプレミアム会員限定です。');
+        return redirect()->route('subscription')->with('message','予約機能は有料会員限定です。');
         }
         return view('reservations.create', compact('store'));
     }
 
     public function store(Request $request, Store $store)
     {
+        $openTime = Carbon::parse($store->open_time);
+        $closeTime = Carbon::parse($store->close_time);
+        $reservedTime = Carbon::parse($request->reserved_time);
+    
+        // 予約時間の日付部分を今日の日付に揃える
+        $reservedTimeToday = $reservedTime->setDate(now()->year, now()->month, now()->day);
+        $openTimeToday = $openTime->setDate(now()->year, now()->month, now()->day);
+        $closeTimeToday = $closeTime->setDate(now()->year, now()->month, now()->day);
+    
+        // 予約時間が営業時間外の場合
+        if ($reservedTimeToday->lt($openTimeToday) || $reservedTimeToday->gt($closeTimeToday)) {
+            return redirect()->back()->with('error', '予約時間が営業時間外です。');
+        }
+
         $reservation = new Reservation();
         $reservation->user_id = Auth::user()->id;
         $reservation->store_id = $store->id;
@@ -32,9 +47,7 @@ class ReservationController extends Controller
 
     public function destroy(Reservation $reservation)
     {
-        $reservation = Reservation::where("store_id", "$reservation->request_id")
-        ->where("user_id", Auth::id())
-        ->delete();
+        $reservation->delete();
 
         return redirect()->back()->with('message','予約をキャンセルしました。');
     }
