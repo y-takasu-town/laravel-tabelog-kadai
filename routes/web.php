@@ -21,6 +21,8 @@ use App\Http\Controllers\SubscriptionController;
 |
 */
 
+Auth::routes(['verify' => true]);
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -35,25 +37,32 @@ Route::controller(UserController::class)->group(function () {
 
 });
 
+Route::controller(StoreController::class)->group(function () {
+    Route::post('stores/{store}/favorite', [StoreController::class, 'favorite'])->name('stores.favorite');
+    Route::resource('stores', StoreController::class)->middleware(['auth', 'verified']);
+
+});   
+
+Route::controller(ReservationController::class)->group(function () {
+    Route::get('stores/{store}/reservation', [ReservationController::class, 'create'])->name('stores.reservation');
+    Route::post('stores/{store}/reservation', [ReservationController::class, 'store'])->name('stores.reservation.save');
+    Route::delete('reservation/{reservation}/delete', [ReservationController::class, 'destroy'])->name('reservations.destroy');
+
+});
+
+Route::controller(SubscriptionController::class)->group(function () {
+    Route::get('/subscription', [SubscriptionController::class, 'index'])->name('subscription')->middleware('auth');
+    Route::post('/subscription/payment', [SubscriptionController::class, 'store'])->name('stripe.store')->middleware('auth');
+    Route::post('/subscription/cancel/', [SubscriptionController::class,'cancelsubscription'])->name('stripe.cancel');
+    Route::get('/edit_card', [SubscriptionController::class, 'edit'])->name('mypage.edit_card')->middleware('auth');
+    Route::post('/update_card', [SubscriptionController::class, 'update'])->name('stripe.update')->middleware('auth');
+
+});
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
 Route::get('/', [TopController::class, 'index']);
 
-Route::post('stores/{store}/favorite', [StoreController::class, 'favorite'])->name('stores.favorite');
-Route::resource('stores', StoreController::class)->middleware(['auth', 'verified']);
-
 Route::get('company', [CompanyController::class,'index'])->name('company');
-
-Route::get('stores/{store}/reservation', [App\Http\Controllers\ReservationController::class, 'create'])->name('stores.reservation');
-Route::post('stores/{store}/reservation', [App\Http\Controllers\ReservationController::class, 'store'])->name('stores.reservation.save');
-Auth::routes(['verify' => true]);
-Route::delete('reservation/{reservation}/delete', [ReservationController::class, 'destroy'])->name('reservations.destroy');
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/subscription', [SubscriptionController::class, 'index'])->name('subscription')->middleware('auth');
-Route::post('/subscription/payment', [SubscriptionController::class, 'store'])->name('stripe.store')->middleware('auth');
-Route::post('/subscription/cancel/', [SubscriptionController::class,'cancelsubscription'])->name('stripe.cancel');
-
-Route::get('/edit_card', [SubscriptionController::class, 'edit'])->name('mypage.edit_card')->middleware('auth');
-Route::post('/update_card', [SubscriptionController::class, 'update'])->name('stripe.update')->middleware('auth');
