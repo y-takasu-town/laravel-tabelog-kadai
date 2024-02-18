@@ -25,13 +25,13 @@
                 <li class="nav-item mr-5">
                   <a class="nav-link" href="{{ route('register') }}">
                       <i class="fa-solid fa-address-card"></i>
-                      {{ __('Register') }}
+                      {{ __('登録') }}
                   </a>
                 </li>
                 <li class="nav-item mr-5">
                   <a class="nav-link" href="{{ route('login') }}">
                       <i class="fa-solid fa-right-to-bracket"></i>
-                      {{ __('Login') }}
+                      {{ __('ログイン',) }}
                   </a>
                 </li>
                 <hr>

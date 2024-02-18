@@ -42,9 +42,9 @@ class CustomVerifyEmail extends VerifyEmail
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->line(__('Verify Your Email Address'))
-        ->action(__('Verify Email Address'), $this->verificationUrl($notifiable))
-        ->line(__('If you did not create an account, no further action is required.'));
+        ->line(__('「メールアドレス確認」ボタンをクリックして、ユーザ登録を完了してください'))
+        ->action(__('メールアドレス確認'), $this->verificationUrl($notifiable))
+        ->line(__('心当たりがない場合は、本メッセージは破棄してください。心当たりがない場合は、本メッセージは破棄してください。'));
     }
 
     /**
