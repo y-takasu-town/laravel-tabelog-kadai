@@ -41,30 +41,9 @@
                                 <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
                             @endif
                         </a><br>
-                            <div class="row p-2 border-bottom">
-                                <div class="col-2">
-                                    <span class="fw-bold">カテゴリ:</span>
-                                </div>
-                                <div class="col">
-                                    {{$store->category->name}}
-                                </div>
-                            </div><br> 
-                            <div class="row p-2 border-bottom">
-                                <div class="col-2">
-                                    <span class="fw-bold">住所:</span>
-                                </div>
-                                <div class="col">
-                                    <span>{{$store->address}} </span>
-                                </div>
-                            </div><br>
-                            <div class="row p-2 border-bottom">
-                                <div class="col-2">
-                                    <span class="fw-bold">店舗説明:</span>
-                                </div>
-                                <div class="col">
-                                    {{$store->discription}}
-                                </div>
-                            </div><br>
+                            {{ カテゴリ:$store->category->name }}<br> 
+                            {{ 住所:$store->address }}<br>
+                            {{ 店舗説明:$store->discription }}<br>
                     </div>
                 @endforeach
             </div>
