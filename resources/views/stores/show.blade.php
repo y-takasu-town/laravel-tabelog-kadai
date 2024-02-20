@@ -112,9 +112,9 @@
                             </button>
                         </a>
                     @else
-                        <button type="button" class="mt-3 btn nagoyameshi-submit-button disabled_button">
-                            予約
-                        </button>
+                    <a href="{{route('subscription')}}" class="btn btn-primary my-3">
+                        予約
+                    </a>
                     @endif
                 </div><hr>
 
