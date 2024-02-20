@@ -20,7 +20,7 @@
                 @if (Auth::user()->subscribed('default') && Auth::user()->subscription('default')->onGracePeriod() && empty(Auth::user()->subscription('default')->ends_at))
                     <form method="POST" action="{{ route('stripe.cancel') }}">
                         @csrf
-                        <button class="btn btn-primary">有料会員を解約する</button>
+                        有料会員です。<button class="btn btn-primary">有料会員を解約する</button>
                     </form>
                 @elseif (Auth::user()->subscribed('default') && Auth::user()->subscription('default')->onGracePeriod() && !empty(Auth::user()->subscription('default')->ends_at))
                     <p>有料会員を解約しました。{{ Auth::user()->subscription('default')->ends_at->format('Y年m月d日') }}までご利用いただけます。</p>
