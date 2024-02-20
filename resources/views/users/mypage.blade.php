@@ -38,28 +38,20 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>
-                        <a href="{{route('mypage.edit')}}">会員情報の編集
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('mypage.edit_password')}}">パスワード変更
-                            <i class="fa-solid fa-lock"></i>
-                        </a>
-                    </li>
+                    <a href="{{route('mypage.edit')}}">
+                        <i class="fa-solid fa-pen-to-square"></i>会員情報の編集
+                    </a><br>
+                    <a href="{{route('mypage.edit_password')}}">
+                        <i class="fa-solid fa-lock"></i>パスワード変更
+                    </a><br>
                     @if (Auth::user()->subscribed('default'))
-                    <li>
-                        <a href="{{route('mypage.edit_card')}}">クレジットカード情報変更
-                            <i class="fa-solid fa-credit-card"></i>
+                        <a href="{{route('mypage.edit_card')}}">
+                            <i class="fa-solid fa-credit-card"></i>クレジットカード情報変更
+                        </a><br>
+                        <a href="{{route('mypage.favorite')}}">
+                            <i class="fa-solid fa-star"></i>お気に入り一覧
                         </a>
-                    </li>
-                    <li>
-                        <a href="{{route('mypage.favorite')}}">お気に入り一覧
-                            <i class="fa-solid fa-star"></i>
-                        </a>
-                    </li>
-                        @endif
+                    @endif
                 </ul>
             </div>
         </div>
@@ -75,8 +67,13 @@
                             <li>
                                 <a href="{{route('stores.show', $reservation->store_id)}}">
                                     {{ $reservation->store->name }}
+                                    <p>予約日時: {{ $reservation->reserved_time }}</p>
+                                    @if ($reservation->store->image !== "")
+                                        <img src="{{ asset($reservation->store->image) }}" class="img-thumbnail">
+                                    @else
+                                        <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
+                                    @endif
                                 </a>
-                                <p>来店予定時間: {{ $reservation->reserved_time }}</p>
                                 <form action="{{route('reservations.destroy',$reservation)}}" method="post">
                                     @csrf
                                     @method('DELETE')
