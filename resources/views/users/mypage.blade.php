@@ -40,14 +40,14 @@
                 <ul>
                     <a href="{{route('mypage.edit')}}">
                         <i class="fa-solid fa-pen-to-square"></i>会員情報の編集
-                    </a><br>
+                    </a><br><br>
                     <a href="{{route('mypage.edit_password')}}">
                         <i class="fa-solid fa-lock"></i>パスワード変更
-                    </a><br>
+                    </a><br><br>
                     @if (Auth::user()->subscribed('default'))
                         <a href="{{route('mypage.edit_card')}}">
                             <i class="fa-solid fa-credit-card"></i>クレジットカード情報変更
-                        </a><br>
+                        </a><br><br>
                         <a href="{{route('mypage.favorite')}}">
                             <i class="fa-solid fa-star"></i>お気に入り一覧
                         </a>
@@ -67,13 +67,13 @@
                             <li>
                                 <a href="{{route('stores.show', $reservation->store_id)}}">
                                     {{ $reservation->store->name }}
-                                    <p>予約日時: {{ $reservation->reserved_time }}</p>
                                     @if ($reservation->store->image !== "")
                                         <img src="{{ asset($reservation->store->image) }}" class="img-thumbnail">
                                     @else
                                         <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
                                     @endif
                                 </a>
+                                <p>予約日時: {{ $reservation->reserved_time }}</p>
                                 <form action="{{route('reservations.destroy',$reservation)}}" method="post">
                                     @csrf
                                     @method('DELETE')
