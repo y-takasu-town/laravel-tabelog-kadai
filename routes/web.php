@@ -39,24 +39,24 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     });
     
     Route::controller(StoreController::class)->group(function () {
-        Route::post('stores/{store}/favorite', [StoreController::class, 'favorite'])->name('stores.favorite');
-        Route::resource('stores', StoreController::class)->middleware(['auth', 'verified']);
+        Route::post('stores/{store}/favorite', 'favorite')->name('stores.favorite');
+        Route::resource('stores')->middleware(['auth', 'verified']);
     
     });   
     
     Route::controller(ReservationController::class)->group(function () {
-        Route::get('stores/{store}/reservation', [ReservationController::class, 'create'])->name('stores.reservation');
-        Route::post('stores/{store}/reservation', [ReservationController::class, 'store'])->name('stores.reservation.save');
-        Route::delete('reservation/{reservation}/delete', [ReservationController::class, 'destroy'])->name('reservations.destroy');
+        Route::get('stores/{store}/reservation', 'create')->name('stores.reservation');
+        Route::post('stores/{store}/reservation', 'store')->name('stores.reservation.save');
+        Route::delete('reservation/{reservation}/delete', 'destroy')->name('reservations.destroy');
     
     });
     
     Route::controller(SubscriptionController::class)->group(function () {
-        Route::get('/subscription', [SubscriptionController::class, 'index'])->name('subscription')->middleware('auth');
-        Route::post('/subscription/payment', [SubscriptionController::class, 'store'])->name('stripe.store')->middleware('auth');
-        Route::post('/subscription/cancel/', [SubscriptionController::class,'cancelsubscription'])->name('stripe.cancel');
-        Route::get('/edit_card', [SubscriptionController::class, 'edit'])->name('mypage.edit_card')->middleware('auth');
-        Route::post('/update_card', [SubscriptionController::class, 'update'])->name('stripe.update')->middleware('auth');
+        Route::get('/subscription', 'index')->name('subscription')->middleware('auth');
+        Route::post('/subscription/payment', 'store')->name('stripe.store')->middleware('auth');
+        Route::post('/subscription/cancel/', 'cancelsubscription')->name('stripe.cancel');
+        Route::get('/edit_card', 'edit')->name('mypage.edit_card')->middleware('auth');
+        Route::post('/update_card', 'update')->name('stripe.update')->middleware('auth');
     
     });
     

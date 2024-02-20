@@ -9,7 +9,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header">{{ __('ログインに成功しました。') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -18,7 +18,7 @@
                             </div>
                         @endif
 
-                        {{ __('ログインに成功しました。') }}
+                        {{ __('左上のNAGOYAMESHIをタップして、名古屋の味を見つけよう。') }}
                     </div>
                 </div>
             </div>
