@@ -45,7 +45,7 @@
                             <span class="fw-bold">開店時間:</span>
                         </div>
                         <div class="col">
-                            <span>{{$store->open_time}}<span>
+                            <span>{{ \Carbon\Carbon::parse($store->open_time)->format('H:i') }}<<span>
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@
                             <span class="fw-bold">閉店時間:</span>
                         </div>
                         <div class="col">
-                            <span>{{$store->close_time}}</span> 
+                            <span>{{ \Carbon\Carbon::parse($store->close_time)->format('H:i') }}<</span> 
                         </div>
                     </div>
 
