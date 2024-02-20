@@ -13,7 +13,7 @@
 <div class="container">
     <div class="col-md-6 mx-auto">
         <div class="card">
-            <div class="card-header" style="font-size: 24px;, font-weight: bold;">
+            <div class="card-header" style="font-size: 24px; font-weight: bold;">
                 会員ステータス
             </div>
             <div class="card-body">
@@ -33,10 +33,10 @@
             </div>
         </div>
         <div class="card mt-5">
-            <div class="card-header" style="font-size: 24px;, font-weight: bold;">
+            <div class="card-header" style="font-size: 24px; font-weight: bold;">
                 マイページ
             </div>
-            <div class="card-body">
+            <div class="card-body container">
                 <ul>
                     <a href="{{route('mypage.edit')}}">
                         <i class="fa-solid fa-pen-to-square"></i>会員情報の編集
@@ -58,7 +58,7 @@
 
         @if (Auth::user()->subscribed('default'))
             <div class="card mt-5">
-                <div class="card-header" style="font-size: 24px;, font-weight: bold;">
+                <div class="card-header" style="font-size: 24px; font-weight: bold;">
                     ご予約履歴
                 </div>
                 <div class="card-body">
