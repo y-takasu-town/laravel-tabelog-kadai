@@ -12,7 +12,7 @@
             @csrf
             <input type="hidden" name="_method" value="PUT">
             <div class="form-group row mb-3">
-                <label for="name" class="">氏名</label>
+                <label for="name" class="col-md-3 col-form-label text-md-right">氏名</label>
                 <div class="col-md-7">
                     <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus placeholder="侍 太郎">
                     @error('name')
@@ -24,7 +24,7 @@
             </div>
 
             <div class="form-group row mb-3">
-                <label for="email" class="text-md-left samuraimart-edit-user-info-label">メールアドレス</label>
+                <label for="email" class="col-md-3 col-form-label text-md-right">メールアドレス</label>
                 <div class="col-md-7">
                     <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email" autofocus placeholder="samurai@samurai.com">
                     @error('email')
@@ -36,7 +36,7 @@
             </div>
 
             <div class="form-group d-flex justify-content-center">
-                <button type="submit" class="btn nagoyameshi-submit-button mt-3 w-25">
+                <button type="submit" class="btn btn-primary my-3">
                     保存
                 </button>
             </div>
