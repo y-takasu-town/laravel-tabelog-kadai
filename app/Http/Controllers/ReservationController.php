@@ -46,6 +46,12 @@ class ReservationController extends Controller
             'amount' => 'required|numeric|min:1',
         ]);
 
+        Reservation::create([
+            'user_id' => $request->user_id,
+            'store_id' => $request->store_id,
+            'amount' => $request->amount,
+        ]);
+
         return redirect()->route('mypage')->with('message','予約が完了しました。');
     }
 
