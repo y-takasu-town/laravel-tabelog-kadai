@@ -36,7 +36,7 @@
             <div class="card-header" style="font-size: 20px; font-weight: bold;">
                 マイページ
             </div>
-            <div class="card-body container text-center">
+            <div class="card-body">
                 <ul>
                     <a href="{{route('mypage.edit')}}">
                         <i class="fa-solid fa-pen-to-square"></i>会員情報の編集
