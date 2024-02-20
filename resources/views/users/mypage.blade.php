@@ -39,17 +39,25 @@
             <div class="card-body">
                 <ul>
                     <li>
-                        <a href="{{route('mypage.edit')}}">会員情報の編集</a>
+                        <a href="{{route('mypage.edit')}}">会員情報の編集
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
                     </li>
                     <li>
-                        <a href="{{route('mypage.edit_password')}}">パスワード変更</a>
+                        <a href="{{route('mypage.edit_password')}}">パスワード変更
+                            <i class="fa-solid fa-lock"></i>
+                        </a>
                     </li>
                     @if (Auth::user()->subscribed('default'))
                     <li>
-                        <a href="{{route('mypage.edit_card')}}">クレジットカード情報変更</a>
+                        <a href="{{route('mypage.edit_card')}}">クレジットカード情報変更
+                            <i class="fa-solid fa-credit-card"></i>
+                        </a>
                     </li>
                     <li>
-                        <a href="{{route('mypage.favorite')}}">お気に入り一覧</a>
+                        <a href="{{route('mypage.favorite')}}">お気に入り一覧
+                            <i class="fa-solid fa-star"></i>
+                        </a>
                     </li>
                         @endif
                 </ul>
@@ -72,7 +80,7 @@
                                 <form action="{{route('reservations.destroy',$reservation)}}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit">キャンセルする</button>
+                                    <button type="submit" class="btn btn-primary my-3">キャンセル</button>
                                 </form>
                             </li>
                         @endforeach
