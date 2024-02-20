@@ -25,7 +25,7 @@
                             @csrf
                                 <div class="mb-3">
                                     <label for="reserved_time" class="form-label">ご予約時間</label>
-                                    <input type="datetime-local" class="form-control" name="reserved_time">
+                                    <input type="datetime-local" class="form-control" name="reserved_time" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="amount" class="form-label">ご利用人数</label>

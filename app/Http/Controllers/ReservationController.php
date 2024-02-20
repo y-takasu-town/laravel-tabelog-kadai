@@ -44,12 +44,14 @@ class ReservationController extends Controller
 
         $request->validate([
             'amount' => 'required|numeric|min:1',
+            'reserved_time' => 'required|date',
         ]);
 
         Reservation::create([
             'user_id' => $request->user_id,
             'store_id' => $request->store_id,
             'amount' => $request->amount,
+            'reserved_time' => $request->reserved_time,
         ]);
 
         return redirect()->route('mypage')->with('message','予約が完了しました。');
