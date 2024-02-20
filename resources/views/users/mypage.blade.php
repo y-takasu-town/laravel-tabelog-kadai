@@ -10,10 +10,10 @@
     <div class="alert alert-success">{{session('message')}}</div>
 @endif
 
-<div class="row">
+<div class="container">
     <div class="col-md-6 mx-auto">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header" style="font-size: 30px;">
                 会員ステータス
             </div>
             <div class="card-body">
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="card mt-5">
-            <div class="card-header">
+            <div class="card-header" style="font-size: 30px;">
                 マイページ
             </div>
             <div class="card-body">
@@ -58,7 +58,7 @@
 
         @if (Auth::user()->subscribed('default'))
             <div class="card mt-5">
-                <div class="card-header">
+                <div class="card-header" style="font-size: 30px;">
                     ご予約履歴
                 </div>
                 <div class="card-body">
@@ -66,7 +66,7 @@
                         @foreach (Auth::user()->reservations as $reservation)
                             <li>
                                 <a href="{{route('stores.show', $reservation->store_id)}}">
-                                    {{ $reservation->store->name }}
+                                    {{ $reservation->store->name }}<br>
                                     @if ($reservation->store->image !== "")
                                         <img src="{{ asset($reservation->store->image) }}" class="img-thumbnail">
                                     @else

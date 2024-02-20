@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="justify-content-center">
+    <div class="container">
         <h1>お気に入り</h1>
 
         @if(session('success'))
