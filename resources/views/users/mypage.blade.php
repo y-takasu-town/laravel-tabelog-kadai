@@ -13,7 +13,7 @@
 <div class="container">
     <div class="col-md-6 mx-auto">
         <div class="card">
-            <div class="card-header" style="font-size: 30px;">
+            <div class="card-header" style="font-size: 24px;, font-weight: bold;">
                 会員ステータス
             </div>
             <div class="card-body">
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="card mt-5">
-            <div class="card-header" style="font-size: 30px;">
+            <div class="card-header" style="font-size: 24px;, font-weight: bold;">
                 マイページ
             </div>
             <div class="card-body">
@@ -58,7 +58,7 @@
 
         @if (Auth::user()->subscribed('default'))
             <div class="card mt-5">
-                <div class="card-header" style="font-size: 30px;">
+                <div class="card-header" style="font-size: 24px;, font-weight: bold;">
                     ご予約履歴
                 </div>
                 <div class="card-body">
