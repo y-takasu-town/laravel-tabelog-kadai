@@ -35,17 +35,23 @@ class ReservationController extends Controller
             return redirect()->back()->with('error', '予約時間が営業時間外です。');
         }
 
+        // 予約時間が30分ごとでない場合
+        if ($reservedTime->minute % 30 != 0) {
+            return redirect()->back()->with('error', '予約時間は30分ごとに設定してください。');
+        }
+
+        // 予約データを保存
+        $request->validate([
+            'amount' => 'required|numeric|min:1',
+            'reserved_time' => 'required|date',
+        ]);
+
         $reservation = new Reservation();
         $reservation->user_id = Auth::user()->id;
         $reservation->store_id = $store->id;
         $reservation->amount = $request->amount;
         $reservation->reserved_time = $request->reserved_time;
         $reservation->save();
-
-        $request->validate([
-            'amount' => 'required|numeric|min:1',
-            'reserved_time' => 'required|date',
-        ]);
 
         return redirect()->route('mypage')->with('message','予約が完了しました。');
     }
