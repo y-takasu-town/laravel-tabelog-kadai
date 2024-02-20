@@ -17,7 +17,6 @@
                 会員ステータス
             </div>
             <div class="card-body">
-                {{ dd(Auth::user()->subscribed('default'), Auth::user()->subscription('default')->onGracePeriod(), empty(Auth::user()->subscription('default')->ends_at)) }}
                 @if (Auth::user()->subscribed('default') && Auth::user()->subscription('default')->onGracePeriod() && empty(Auth::user()->subscription('default')->ends_at))
                     <form method="POST" action="{{ route('stripe.cancel') }}">
                         @csrf
