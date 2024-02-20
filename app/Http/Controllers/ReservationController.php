@@ -42,6 +42,10 @@ class ReservationController extends Controller
         $reservation->reserved_time = $request->reserved_time;
         $reservation->save();
 
+        $request->validate([
+            'amount' => 'required|numeric|min:1',
+        ]);
+
         return redirect()->route('mypage')->with('message','予約が完了しました。');
     }
 
