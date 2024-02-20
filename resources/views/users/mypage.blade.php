@@ -18,7 +18,7 @@
             </div>
             <div class="card-body">
                 @if (Auth::user()->subscribed('default') && Auth::user()->subscription('default')->onGracePeriod() && empty(Auth::user()->subscription('default')->ends_at))
-                    <p>有料会員です。店舗予約やお気に入り機能、お店のレビュー投稿ができます。</p>
+                    <p>現在、有料会員です。店舗予約やお気に入り機能、お店のレビュー投稿ができます。</p>
                     <form method="POST" action="{{ route('stripe.cancel') }}">
                         @csrf
                         <button class="btn btn-primary">有料会員を解約する</button>
