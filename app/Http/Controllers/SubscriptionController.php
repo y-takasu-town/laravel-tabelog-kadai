@@ -42,7 +42,7 @@ class SubscriptionController extends Controller
                 ->create($paymentMethod);
 
             // 処理後に'ルート設定'にページ移行
-            return redirect()->route('subscription')->with('message', '有料会員登録しました。');
+            return redirect()->route('mypage')->with('message', '有料会員登録しました。');
         } catch (\Exception $e) {
             // 例外が発生した場合の処理
             return redirect()->back()->with('error', 'サブスクリプションの作成中にエラーが発生しました。');
