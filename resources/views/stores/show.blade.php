@@ -131,7 +131,7 @@
                                     <option value="1">★</option>
                                 </select><br><br>
                             <h5>レビュー投稿をしてみよう</h5>
-                                @error('レビュー')
+                                @error('comment')
                                     <strong>レビュー内容を入力してください</strong>
                                 @enderror
                                     <textarea name="comment" rows="5" cols="70"></textarea>
