@@ -45,7 +45,7 @@
                             <span class="fw-bold">開店時間:</span>
                         </div>
                         <div class="col">
-                            <span>{{ \Carbon\Carbon::parse($store->open_time)->format('H:i') }}<<span>
+                            <span>{{ \Carbon\Carbon::parse($store->open_time)->format('H:i') }}<span>
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@
                             <span class="fw-bold">閉店時間:</span>
                         </div>
                         <div class="col">
-                            <span>{{ \Carbon\Carbon::parse($store->close_time)->format('H:i') }}<</span> 
+                            <span>{{ \Carbon\Carbon::parse($store->close_time)->format('H:i') }}</span> 
                         </div>
                     </div>
 
@@ -63,7 +63,7 @@
                             <span class="fw-bold">価格帯:</span>
                         </div>
                         <div class="col">
-                            <span>{{$store->price_range}}</span> 
+                            <span>約{{$store->price_range}}円</span> 
                         </div>
                     </div>
 
