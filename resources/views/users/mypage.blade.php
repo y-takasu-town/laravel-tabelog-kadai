@@ -20,7 +20,7 @@
                 @if (Auth::check())
                     @if (Auth::user()->subscribed('default'))
                         @if (Auth::user()->subscription('default')->onGracePeriod() && empty(Auth::user()->subscription('default')->ends_at))
-                            <form method="POST" action="{{ route('stripe.cancel') }}">
+                            <form method="POST" action="{{ route('subscription.cancelsubscription') }}">
                                 @csrf
                                 有料会員です。<button class="btn btn-primary">有料会員を解約する</button>
                             </form>
