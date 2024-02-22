@@ -40,6 +40,11 @@ class ReservationController extends Controller
             return redirect()->back()->with('error', '予約時間は30分ごとに設定してください。');
         }
 
+        // 予約日時が過去の場合
+        if ($reservedTime->lt(now())) {
+            return redirect()->back()->with('error', '予約日時は過去の日時に設定できません。');
+        }
+
         // 予約データを保存
         $request->validate([
             'amount' => 'required|numeric|min:1',
