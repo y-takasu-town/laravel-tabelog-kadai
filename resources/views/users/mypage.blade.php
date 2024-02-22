@@ -17,19 +17,22 @@
                 会員ステータス
             </div>
             <div class="card-body">
-                @if (Auth::user()->subscribed('default') && Auth::user()->subscription('default')->onGracePeriod() && empty(Auth::user()->subscription('default')->ends_at))
-                    <p>有料会員です。店舗予約やお気に入り機能、お店のレビュー投稿ができます。</p>
-                    <form method="POST" action="{{ route('stripe.cancel') }}">
-                        @csrf
-                        <button class="btn btn-primary">有料会員を解約する</button>
-                    </form>
-                @elseif (Auth::user()->subscribed('default') && Auth::user()->subscription('default')->onGracePeriod() && !empty(Auth::user()->subscription('default')->ends_at))
-                    <p>有料会員を解約しました。{{ Auth::user()->subscription('default')->ends_at->format('Y年m月d日') }}までご利用いただけます。</p>
-                @endif
-
-                @if (!Auth::user()->subscribed('default'))
-                    <p>有料会員に登録すると、店舗予約やお気に入り機能、お店のレビュー投稿ができます。</p>
-                    <a class="btn btn-primary" href="{{ route('subscription') }}">有料会員に登録する</a>
+                @if (Auth::check())
+                    @if (Auth::user()->subscribed('default'))
+                        @if (Auth::user()->subscription('default')->onGracePeriod() && empty(Auth::user()->subscription('default')->ends_at))
+                            <form method="POST" action="{{ route('stripe.cancel') }}">
+                                @csrf
+                                有料会員です。<button class="btn btn-primary">有料会員を解約する</button>
+                            </form>
+                        @elseif (Auth::user()->subscription('default')->onGracePeriod() && !empty(Auth::user()->subscription('default')->ends_at))
+                            <p>有料会員を解約しました。{{ Auth::user()->subscription('default')->ends_at->format('Y年m月d日') }}までご利用いただけます。</p>
+                        @endif
+                    @else
+                        <p>有料会員に登録すると、店舗予約やお気に入り機能、お店のレビュー投稿ができます。</p>
+                        <a class="btn btn-primary" href="{{ route('subscription') }}">有料会員に登録する</a>
+                    @endif
+                @else
+                    <p>ログインしてください。</p>
                 @endif
             </div>
         </div>
