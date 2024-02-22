@@ -40,10 +40,11 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     
     Route::controller(StoreController::class)->group(function () {
         Route::post('stores/{store}/favorite', 'favorite')->name('stores.favorite');
-        Route::resource('stores')->middleware(['auth', 'verified']);
     
     });   
-    
+
+    Route::resource('stores', StoreController::class)->middleware(['auth', 'verified']);
+
     Route::controller(ReservationController::class)->group(function () {
         Route::get('stores/{store}/reservation', 'create')->name('stores.reservation');
         Route::post('stores/{store}/reservation', 'store')->name('stores.reservation.save');
