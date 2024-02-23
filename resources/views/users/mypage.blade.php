@@ -78,7 +78,7 @@
                                         <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
                                     @endif
                                 </a>
-                                <p>予約日時: {{ $reservation->reserved_time}}</p>
+                                <p>予約日時: {{ \Carbon\Carbon::parse($reservation->reserved_time)->diffInMinutes(now()) }}</p>
                                 <form action="{{route('reservations.destroy',$reservation)}}" method="post">
                                     @csrf
                                     @method('DELETE')
