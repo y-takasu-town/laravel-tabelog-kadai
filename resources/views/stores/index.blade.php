@@ -41,9 +41,9 @@
                                 <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
                             @endif
                         </a><br>
-                            {{ $store->category->name }}<br> 
-                            {{ $store->address }}<br>
-                            {{ $store->discription }}<br>
+                            {{ カテゴリ名:$store->category->name }}<br> 
+                            {{ 住所:$store->address }}<br>
+                            {{ 店舗説明:$store->discription }}<br>
                     </div>
                 @endforeach
             </div>
