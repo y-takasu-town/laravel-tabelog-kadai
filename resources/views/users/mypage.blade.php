@@ -12,30 +12,20 @@
 
 <div class="container">
     <div class="col-md-6 mx-auto">
-        <div class="card">
-            <div class="card-header" style="font-size: 20px; font-weight: bold;">
-                会員ステータス
-            </div>
-            @if(!$user->subscribed('default'))
-                <tr>
-                <th scope="row">
-                    <a href="{{ route('subscription.index') }}" class="btn btn-primary my-3">有料会員登録</a>
-                </th>
-                </tr>
-            @else
-                <tr>
-                <th scope="row" >
-                    <a href="{{ route('stripe.cancel') }}" class="btn btn-primary my-3">有料会員を解約する</a>
-                </th>
-                </tr>
-            @endif
-        </div>
         <div class="card mt-5">
             <div class="card-header" style="font-size: 20px; font-weight: bold;">
                 マイページ
             </div>
             <div class="card-body">
                 <ul>
+                    @if(!$user->subscribed('default'))
+                        <a href="{{ route('subscription.index') }}">
+                            <i class="fa-solid fa-address-card"></i>有料会員登録</a>
+                    @else
+                        <a href="{{ route('stripe.cancel') }}">
+                            <i class="fa-solid fa-address-card"></i>有料会員を解約する</a>
+                    @endif
+                    <br><br>
                     <a href="{{route('mypage.edit')}}">
                         <i class="fa-solid fa-pen-to-square"></i>会員情報の編集
                     </a><br><br>
