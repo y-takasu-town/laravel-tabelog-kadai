@@ -89,17 +89,4 @@ class SubscriptionController extends Controller
         return redirect()->route('mypage')->with('message', '支払い方法が更新されました。');
     }
 
-    public function mypage()
-    {
-        $user = Auth::user();
-        $subscriptionEndsAt = null;
-    
-        // 有料会員であれば、有料会員の期限を取得する
-        if ($user->subscribed('default')) {
-            $subscriptionEndsAt = $user->subscription('default')->ends_at;
-        }
-    
-        return view('users.mypage', compact('user', 'subscriptionEndsAt'));
-    }
-
 }
