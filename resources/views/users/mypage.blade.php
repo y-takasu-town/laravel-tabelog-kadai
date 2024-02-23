@@ -19,24 +19,14 @@
             @if(!$user->subscribed('default'))
                 <tr>
                 <th scope="row">
-                    <a href="{{ route('subscription.index') }}" class="h4 text-decoration-none text-nowrap fw-bold link-body-emphasis">有料会員登録</a>
+                    <a href="{{ route('subscription.index') }}" class="btn btn-primary my-3">有料会員登録</a>
                 </th>
-                <td>
-                <div class="mx-auto text-nowrap">
-                    お気に入り登録・来店予約・レビューの投稿ができます
-                    </div>
-                </td>
                 </tr>
             @else
                 <tr>
                 <th scope="row" >
-                    <a href="{{ route('stripe.cancel') }}" class="h4 text-decoration-none text-nowrap fw-bold link-body-emphasis">有料会員を解約する</a>
+                    <a href="{{ route('stripe.cancel') }}" class="btn btn-primary my-3">有料会員を解約する</a>
                 </th>
-                <td>
-                    <div class="text-nowrap">
-                    有料会員（お気に入り追加・来店予約・レビュー投稿）の利用をやめる
-                    </div>
-                </td>
                 </tr>
             @endif
         </div>
