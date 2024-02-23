@@ -30,7 +30,7 @@
             @else
                 <tr>
                 <th scope="row" >
-                    <a href="{{ route('subscription.cancelsubscription') }}" class="h4 text-decoration-none text-nowrap fw-bold link-body-emphasis">有料会員を解約する</a>
+                    <a href="{{ route('stripe.cancel') }}" class="h4 text-decoration-none text-nowrap fw-bold link-body-emphasis">有料会員を解約する</a>
                 </th>
                 <td>
                     <div class="text-nowrap">
