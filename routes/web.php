@@ -51,7 +51,6 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('stores/{store}/reservation', 'create')->name('stores.reservation');
         Route::post('stores/{store}/reservation', 'store')->name('stores.reservation.save');
         Route::delete('reservation/{reservation}/delete', 'destroy')->name('reservations.destroy');
-    
     });
     
     Route::controller(SubscriptionController::class)->group(function () {
