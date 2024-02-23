@@ -7,7 +7,7 @@
 @section('content')
     <div class="container nagoyameshi-container pd-5">
         <div class="row justify-content-center">
-            <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-10">
+            <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8">
                 @if(session('success'))
                     <div class="alert alert-success mb-3">
                         {{ session('success') }}
