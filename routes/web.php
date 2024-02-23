@@ -42,7 +42,6 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     
     Route::controller(StoreController::class)->group(function () {
         Route::post('stores/{store}/favorite', 'favorite')->name('stores.favorite');
-    
     });   
 
     Route::resource('stores', StoreController::class)->middleware(['auth', 'verified']);
@@ -59,7 +58,6 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::post('/subscription/cancel', 'cancelsubscription')->name('stripe.cancel');
         Route::get('/edit_card', 'edit')->name('mypage.edit_card')->middleware('auth');
         Route::post('/update_card', 'update')->name('stripe.update')->middleware('auth');
-    
     });
     
     Route::get('/home', [HomeController::class, 'index'])->name('home');
