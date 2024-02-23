@@ -14,6 +14,23 @@
     <div class="col-md-6 mx-auto">
         <div class="card mt-5">
             <div class="card-header" style="font-size: 20px; font-weight: bold;">
+                会員ステータス
+            </div>
+            <div class="card-body">
+                <!-- 有料会員情報の表示 -->
+                @if ($user->subscribed('default'))
+                    @if ($subscriptionEndsAt)
+                        <p>有料会員が {{ $subscriptionEndsAt->format('Y年m月d日') }} まで続きます。</p>
+                    @else
+                        <p>現在、有料会員です。</p>
+                    @endif
+                @else
+                    <p>現在、無料会員です。</p>
+                @endif
+            </div>
+        </div>
+        <div class="card mt-5">
+            <div class="card-header" style="font-size: 20px; font-weight: bold;">
                 マイページ
             </div>
             <div class="card-body">
