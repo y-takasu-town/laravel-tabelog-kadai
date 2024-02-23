@@ -50,7 +50,7 @@ class SubscriptionController extends Controller
     }
 
 
-    public function cancelsubscription(Request $request){
+    public function cancel(Request $request){
         $user=User::find(Auth::id());
         $user->subscription('default')->cancel();
         return redirect()->route('mypage')->with('message', 'サブスクリプションを解約しました。');
