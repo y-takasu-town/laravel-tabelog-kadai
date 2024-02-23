@@ -30,7 +30,8 @@ class StoreController extends AdminController
         $grid->column('id', __('Id'))->sortable();
         $grid->column('name', __('Name'))->sortable();
         $grid->column('category.name', __('Category Name'));
-        $grid->column('image', __('Image'))->image();        $grid->column('discription', __('Discription'));
+        $grid->column('image', __('Image'))->image();        
+        $grid->column('discription', __('Discription'));
         $grid->column('open_time', __('Open time'));
         $grid->column('close_time', __('Close time'));
         $grid->column('price_range', __('Price range'))->sortable();
@@ -40,6 +41,10 @@ class StoreController extends AdminController
         $grid->column('holiday', __('Holiday'));
         $grid->column('created_at', __('Created at'))->sortable();
         $grid->column('updated_at', __('Updated at'))->sortable();
+
+        $grid->filter(function($filter) {
+            $filter->like('name', '店舗名');
+        });
 
         return $grid;
     }
