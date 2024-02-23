@@ -42,9 +42,14 @@ class ReservationController extends Controller
         }
 
      
-        // 予約日時が現在よりも前の場合
+        // 予約日時が過去の場合
         if ($reservedTime->lt(now())) {
-            return redirect()->back()->with('error', '予約日時は過去の日時に設定できません。');
+            return redirect()->back()->withInput($request->input())->withErrors(['message' => '現在より過去の予約日時は指定できません。']);
+        }
+
+        // 予約日時が翌日以降の場合
+        if ($reservedTime->gt(now()->endOfDay())) {
+            // 予約が翌日以降の日時であれば何も処理を行わず、次の処理に進む
         }
 
 
