@@ -31,33 +31,35 @@
                 マイページ
             </div>
             <div class="card-body">
-                <ul>
-                    <a href="{{route('mypage.edit')}}">
-                        <i class="fa-solid fa-pen-to-square"></i>会員情報の編集
-                    </a><br><br>
-                    <a href="{{route('mypage.edit_password')}}">
-                        <i class="fa-solid fa-lock"></i>パスワード変更
-                    </a><br><br>
-                    @if (Auth::user()->subscribed('default'))
-                        <a href="{{route('mypage.edit_card')}}">
-                            <i class="fa-solid fa-credit-card"></i>クレジットカード情報変更
+                <div class="text-center">
+                    <ul>
+                        <a href="{{route('mypage.edit')}}">
+                            <i class="fa-solid fa-pen-to-square"></i>会員情報の編集
                         </a><br><br>
-                        <a href="{{route('mypage.favorite')}}">
-                            <i class="fa-solid fa-star"></i>お気に入り一覧
+                        <a href="{{route('mypage.edit_password')}}">
+                            <i class="fa-solid fa-lock"></i>パスワード変更
                         </a><br><br>
-                    @endif
-                    @if(!$user->subscribed('default'))
-                        <a href="{{ route('subscription') }}">
-                        <i class="fa-solid fa-address-card"></i>有料会員に登録する</a>
-                    @else
-                        <a href="#" onclick="event.preventDefault(); document.getElementById('subscription-cancel-form').submit();">
-                            <i class="fa-solid fa-address-card"></i>有料会員を解約する
-                        </a>
-                        <form id="subscription-cancel-form" action="{{ route('subscription.cancel') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    @endif
-                </ul>
+                        @if (Auth::user()->subscribed('default'))
+                            <a href="{{route('mypage.edit_card')}}">
+                                <i class="fa-solid fa-credit-card"></i>クレジットカード情報変更
+                            </a><br><br>
+                            <a href="{{route('mypage.favorite')}}">
+                                <i class="fa-solid fa-star"></i>お気に入り一覧
+                            </a><br><br>
+                        @endif
+                        @if(!$user->subscribed('default'))
+                            <a href="{{ route('subscription') }}">
+                            <i class="fa-solid fa-address-card"></i>有料会員に登録する</a>
+                        @else
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('subscription-cancel-form').submit();">
+                                <i class="fa-solid fa-address-card"></i>有料会員を解約する
+                            </a>
+                            <form id="subscription-cancel-form" action="{{ route('subscription.cancel') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        @endif
+                    </ul>
+                </div>
             </div>
         </div>
 
