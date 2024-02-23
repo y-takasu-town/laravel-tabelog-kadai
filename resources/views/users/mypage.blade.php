@@ -39,7 +39,8 @@
                         <a href="#" onclick="event.preventDefault(); document.getElementById('subscription-cancel-form').submit();">
                             <i class="fa-solid fa-address-card"></i>有料会員を解約する
                         </a>
-                        
+                    @elseif(Auth::user()->subscription('default')->onGracePeriod() && !empty(Auth::user()->subscription('default')->ends_at))
+                            <p>有料会員を解約しました。{{ Auth::user()->subscription('default')->ends_at->format('Y年m月d日') }}までご利用いただけます。</p>
                         <form id="subscription-cancel-form" action="{{ route('subscription.cancel') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
