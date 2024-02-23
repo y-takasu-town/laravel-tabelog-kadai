@@ -43,7 +43,7 @@ class ReservationController extends Controller
 
      
         // 予約日時が現在よりも前の場合
-        if (new DateTime() > $date_time) {
+        if (new DateTime() > $request->date_time) {
             return back()->withInput($request->input())->withErrors(['message' => '現在より過去の予約日時は指定できません。']);
         }
 
