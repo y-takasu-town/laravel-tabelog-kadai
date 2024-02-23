@@ -7,7 +7,7 @@
 @section('content')
 
 @if(session('message'))
-    <div class="alert alert-success">{{session('message')}}</div>
+    <div class="alert alert-success">{{ session('message') }}</div>
 @endif
 
 <div class="container">
@@ -17,13 +17,16 @@
                 会員ステータス
             </div>
             <div class="card-body">
-                    @if(!$user->subscribed('default'))
-                        <h3 class="text-center"><i class="fa-regular fa-user"></i>無料会員</h3><br>
-                        <p class="text-center">有料会員になると、予約やレビュー投稿、お気に入り登録ができます。</p>
-                    @else
-                        <h3 class="text-center"><i class="fa-solid fa-crown"></i>有料会員</h3><br>
-                        <p class="text-center">予約やレビュー投稿、お気に入り登録ができます。</p>
-                    @endif
+                @if (!$user->subscribed('default'))
+                    <h3 class="text-center"><i class="fa-regular fa-user"></i>無料会員</h3><br>
+                    <p class="text-center">有料会員になると、予約やレビュー投稿、お気に入り登録ができます。</p>
+                @elseif ($user->subscribed('default') && $user->subscription('default')->ends_at === null)
+                    <h3 class="text-center"><i class="fa-solid fa-crown"></i>有料会員</h3><br>
+                    <p class="text-center">予約やレビュー投稿、お気に入り登録ができます。</p>
+                @else
+                    <h3 class="text-center"><i class="fa-solid fa-crown"></i>有料会員</h3><br>
+                    <p class="text-center">{{ \Carbon\Carbon::parse($user->subscription('default')->ends_at)->format('Y年m月d日') }}まで有効です。</p>
+                @endif
             </div>
         </div>
         <div class="card mt-5">
@@ -50,12 +53,14 @@
                         <a href="{{ route('subscription') }}">
                         <i class="fa-solid fa-address-card"></i>有料会員に登録する</a>
                     @else
-                        <a href="#" onclick="event.preventDefault(); document.getElementById('subscription-cancel-form').submit();">
-                            <i class="fa-solid fa-address-card"></i>有料会員を解約する
-                        </a>
-                        <form id="subscription-cancel-form" action="{{ route('subscription.cancel') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+                        @if ($user->subscription('default')->ends_at === null)
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('subscription-cancel-form').submit();">
+                                <i class="fa-solid fa-address-card"></i>有料会員を解約する
+                            </a>
+                            <form id="subscription-cancel-form" action="{{ route('subscription.cancel') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        @endif
                     @endif
                 </ul>
             </div>
