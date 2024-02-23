@@ -10,6 +10,7 @@
             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
                 <form>
                     @csrf
+                    <!-- 検索 -->
                     <select name="category_id">
                         <option disabled selected value>カテゴリを選択</option>
                         @foreach($categories as $category)
@@ -20,6 +21,7 @@
                     <button type="submit">検索</button>
                 </form>
 
+                <!-- ソート -->
                 <form method="GET" action="{{ route('stores.index')}}" class="form-inline">
                     <select name="sort" onChange="this.form.submit();" class="form-inline ml-2">
                         @foreach ($sort as $key => $value)
@@ -35,12 +37,14 @@
                 @foreach ($stores as $store)
                     <div class="my-5">
                         <a href="{{ route('stores.show',$store) }}">{{ $store->name }}<br>
+                            <!-- 店舗画像 -->
                             @if ($store->image !== "")
                                 <img src="{{ asset($store->image) }}" class="img-thumbnail">
                             @else
                                 <img src="{{ asset('img/dummy.png') }}" class="img-thumbnail">
                             @endif
                         </a><br>
+                        <!-- 店舗情報 -->
                         {{ $store->category->name }}<br> 
                         {{ $store->address }}<br>
                         {{ $store->discription }}<br>

@@ -14,13 +14,13 @@
                     </div>
                 @endif
                     <h1 class=text-center>{{$store->name}}</h1>
-
+                <!-- 店舗画像 -->
                 @if ($store->image)
                     <img src="{{ asset($store->image) }}" class="w-100">
                 @else
                     <img src="{{ asset('img/dummy.png')}}" class="w-100">
                 @endif
-
+                <!-- 店舗情報 -->
                 <div class="container">
                     <div class="row p-2 border-bottom">
                         <div class="col-2">
@@ -106,6 +106,7 @@
                 
                 <div class="form-group text-center">
                     @if (Auth::user()->subscribed('default'))
+                        <!-- 予約 -->
                         <a href="{{route('stores.reservation', $store)}}">
                             <button type="submit" class="mt-3 btn nagoyameshi-submit-button ">
                                 予約
@@ -122,6 +123,7 @@
                     @if (Auth::user()->subscribed('default'))
                         <form method="POST" action="{{ route('reviews.store') }}"><br>
                             @csrf
+                            <!-- 評価 -->
                             <h5>評価</h5>
                                 <select name="star">
                                     <option value="5">★★★★★</option>
@@ -130,6 +132,7 @@
                                     <option value="2">★★</option>
                                     <option value="1">★</option>
                                 </select><br><br>
+                                <!-- レビュー -->
                             <h5>レビュー投稿をしてみよう</h5>
                                 @error('comment')
                                     <strong>レビュー内容を入力してください</strong>
@@ -151,6 +154,7 @@
                                 @endforeach
 
                     @if (Auth::user()->subscribed('default'))
+                        <!-- お気に入り -->
                         <form action="{{ route('stores.favorite', $store) }}" method="POST">
                             @csrf
                             @if(!empty(Auth::user()->favorites()->where('store_id', $store->id)->first()))
