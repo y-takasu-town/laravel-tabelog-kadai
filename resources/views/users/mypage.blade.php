@@ -42,7 +42,7 @@
                         </a><br><br>
                         <a href="{{route('mypage.favorite')}}">
                             <i class="fa-solid fa-star"></i>お気に入り一覧
-                        </a><br>
+                        </a><br><br>
                     @endif
                     @if(!$user->subscribed('default'))
                         <a href="{{ route('subscription') }}">
