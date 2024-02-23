@@ -36,8 +36,13 @@
                         <a href="{{ route('subscription') }}">
                         <i class="fa-solid fa-address-card"></i>有料会員に登録する</a>
                     @else
-                        <a href="{{ route('stripe.cancel') }}">
-                        <i class="fa-solid fa-address-card"></i>有料会員を解約する</a>
+                        <a href="#" onclick="event.preventDefault(); document.getElementById('subscription-cancel-form').submit();">
+                            <i class="fa-solid fa-address-card"></i>有料会員を解約する
+                        </a>
+                        
+                        <form id="subscription-cancel-form" action="{{ route('subscription.cancel') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     @endif
                 </ul>
             </div>

@@ -66,6 +66,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     
     Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
+
+    Route::post('subscription/cancel', [SubscriptionController::class, 'cancel'])->name('subscription.cancel');
         
 });
 
