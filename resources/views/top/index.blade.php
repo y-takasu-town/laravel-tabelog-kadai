@@ -9,7 +9,9 @@
         <div class="row justify-content-center align-items-center" style="height: 70vh">
             <div class="col-md-6 text-center mx-auto">
                 <h1 class="display-3">NAGOYA MESHI</h1>
-                    <p class="lead">名古屋の味を、見つけよう。</p>
+                <p class="lead">名古屋の味を、見つけよう。</p>
+
+                {{-- 検索フォーム --}}
                 <form action="{{ route('stores.index') }}" method="GET">
                     @csrf
                     <div class="input-group mb-3">
@@ -17,7 +19,8 @@
                     </div>
                     <div class="input-group mb-3">
                         <select class="form-select" aria-label="Default select example" name="category_id">
-                                <option selected value="">カテゴリーを選択</option>
+                            <option selected value="">カテゴリーを選択</option>
+                            {{-- カテゴリオプションのループ --}}
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
@@ -28,7 +31,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('js')
 @endsection

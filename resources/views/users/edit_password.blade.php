@@ -6,9 +6,12 @@
  
 @section('content')
     <div class="container">
-        <form method="post" action="{{route('mypage.update_password')}}">
+        <!-- パスワード更新フォーム -->
+        <form method="post" action="{{ route('mypage.update_password') }}">
             @csrf
             <input type="hidden" name="_method" value="PUT">
+
+            <!-- 新しいパスワード入力 -->
             <div class="form-group row mb-3">
                 <label for="password" class="col-md-3 col-form-label text-md-right">新しいパスワード</label>
 
@@ -23,6 +26,7 @@
                 </div>
             </div>
 
+            <!-- パスワード確認入力 -->
             <div class="form-group row mb-3">
                 <label for="password-confirm" class="col-md-3 col-form-label text-md-right">確認用</label>
 
@@ -31,6 +35,7 @@
                 </div>
             </div>
 
+            <!-- パスワード更新ボタン -->
             <div class="form-group d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary my-3">
                     パスワード更新
@@ -38,5 +43,4 @@
             </div>
         </form>
     </div>
-
 @endsection
