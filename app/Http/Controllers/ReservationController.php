@@ -52,6 +52,7 @@ class ReservationController extends Controller
             if (!$reservedTime->isSameDay($tomorrow) && $reservedTime->lt($tomorrow)) {
                 return redirect()->back()->with('error', '予約日時は翌日以降の日時に設定してください。');
             }
+        }
 
         // 予約データを保存
         $request->validate([
