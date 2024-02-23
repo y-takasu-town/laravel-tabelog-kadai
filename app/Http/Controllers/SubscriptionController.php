@@ -51,19 +51,19 @@ class SubscriptionController extends Controller
 
 
     public function cancel(Request $request)
-        {
-            $user = User::find(Auth::id());
-        
-            // ユーザーが有料会員であるかを確認
-            if ($user->subscribed('default')) {
-                // 有料会員の場合、解約処理を実行
-                $user->subscription('default')->cancel();
-                return redirect()->route('mypage')->with('message', 'サブスクリプションを解約しました。');
-            } else {
-                // 有料会員でない場合は何らかのエラー処理を行うか、メッセージを表示する
-                return redirect()->route('mypage')->with('error', '有料会員ではありません。');
-            }
+    {
+        $user = User::find(Auth::id());
+    
+        // ユーザーが有料会員であるかを確認
+        if ($user->subscribed('default')) {
+            // 有料会員の場合、解約処理を実行
+            $user->subscription('default')->cancel();
+            return redirect()->route('mypage')->with('message', 'サブスクリプションを解約しました。');
+        } else {
+            // 有料会員でない場合は何らかのエラー処理を行うか、メッセージを表示する
+            return redirect()->route('mypage')->with('error', '有料会員ではありません。');
         }
+    }
 
     public function edit()
     {
