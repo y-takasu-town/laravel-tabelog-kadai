@@ -10,28 +10,28 @@
             <div class="col-md-8">
                 @if (session('message'))
                     <div class="alert alert-success mt-3">
-                        {{session('message')}}
+                        {{ session('message') }}
                     </div>
                 @endif
                 @if (session('error'))
-                <div class="alert alert-danger mt-3">
-                    {{session('error')}}
-                </div>
+                    <div class="alert alert-danger mt-3">
+                        {{ session('error') }}
+                    </div>
                 @endif
                 <div class="card">
                     <div class="card-header">予約</div>
                     <div class="card-body">
-                        <form action="{{ route('stores.reservation.save', $store) }}" method="POST">
+                        <form id="reservationForm" action="{{ route('stores.reservation.save', $store) }}" method="POST">
                             @csrf
-                                <div class="mb-3">
-                                    <label for="reserved_time" class="form-label">ご予約時間</label>
-                                    <input type="datetime-local" class="form-control" name="reserved_time" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="amount" class="form-label">ご利用人数</label>
-                                    <input type="number" class="form-control" name="amount" required min="1">
-                                </div>
-                                <button type="submit" class="btn btn-primary">予約</button>
+                            <div class="mb-3">
+                                <label for="reserved_time" class="form-label">ご予約時間</label>
+                                <input type="datetime-local" class="form-control" id="reserved_time" name="reserved_time" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="amount" class="form-label">ご利用人数</label>
+                                <input type="number" class="form-control" name="amount" id="amount" required min="1">
+                            </div>
+                            <button type="submit" class="btn btn-primary">予約</button>
                         </form>                        
                     </div>
                 </div>
@@ -42,4 +42,16 @@
 @endsection
 
 @section('js')
+    <script>
+        document.getElementById('reservationForm').addEventListener('submit', function(event) {
+            var reservedTimeInput = document.getElementById('reserved_time');
+            var reservedTime = new Date(reservedTimeInput.value);
+            var currentTime = new Date();
+
+            if (reservedTime <= currentTime) {
+                alert('予約日時は現在時刻よりも後の日時を選択してください。');
+                event.preventDefault();
+            }
+        });
+    </script>
 @endsection
