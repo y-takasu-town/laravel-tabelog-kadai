@@ -41,16 +41,11 @@ class ReservationController extends Controller
         }
 
      
-       // 予約日時が現在の時刻よりも前の場合
+       // 予約日時が現在よりも前の場合
         if ($reservedTime->lt(now())) {
             return redirect()->back()->with('error', '予約日時は過去の日時に設定できません。');
         }
 
-        // 予約日時が翌日以降の日時でない場合
-        $tomorrow = now()->addDay();
-        if (!$reservedTime->isSameDay($tomorrow) && $reservedTime->lt($tomorrow)) {
-            return redirect()->back()->with('error', '予約日時は翌日以降の日時に設定してください。');
-        }
 
         // 予約データを保存
         $request->validate([
