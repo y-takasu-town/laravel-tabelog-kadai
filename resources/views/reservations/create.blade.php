@@ -25,7 +25,18 @@
                             @csrf
                                 <div class="mb-3">
                                     <label for="reserved_time" class="form-label">ご予約時間</label>
-                                    <input type="datetime-local" class="form-control" name="reserved_time" required>
+                                    <select name="reservation_time" required>
+                                        @for ($i = 0; $i < 24 * 2; $i++)
+                                            @php
+                                                $time = \Carbon\Carbon::createFromTime(0, 0)->addMinutes($i * 30);
+                                            @endphp
+                                            @if(old('reservation_time') && old('reservation_time') == $time->format('H:i'))
+                                            <option value="{{ $time->format('H:i') }}" selected>{{ $time->format('H:i') }}</option>
+                                            @else
+                                            <option value="{{ $time->format('H:i') }}">{{ $time->format('H:i') }}</option>
+                                            @endif
+                                        @endfor
+                                    </select>                                
                                 </div>
                                 <div class="mb-3">
                                     <label for="amount" class="form-label">ご利用人数</label>
