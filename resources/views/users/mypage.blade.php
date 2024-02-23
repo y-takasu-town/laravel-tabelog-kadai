@@ -20,7 +20,7 @@
                 @if (!$user->subscribed('default'))
                     <h3 class="text-center"><i class="fa-regular fa-user"></i>無料会員</h3><br>
                     <p class="text-center">有料会員になると、予約やレビュー投稿、お気に入り登録ができます。</p>
-                @elseif ($user->subscribed('default') && $user->subscription('default')->ends_at === null)
+                @elseif ($user->subscribed('default') && ($user->subscription('default')->ends_at === null || \Carbon\Carbon::parse($user->subscription('default')->ends_at)->lt(now())))
                     <h3 class="text-center"><i class="fa-solid fa-crown"></i>有料会員</h3><br>
                     <p class="text-center">予約やレビュー投稿、お気に入り登録ができます。</p>
                 @else
@@ -53,7 +53,7 @@
                         <a href="{{ route('subscription') }}">
                         <i class="fa-solid fa-address-card"></i>有料会員に登録する</a>
                     @else
-                        @if ($user->subscription('default')->ends_at === null)
+                        @if ($user->subscription('default')->ends_at === null || \Carbon\Carbon::parse($user->subscription('default')->ends_at)->lt(now()))
                             <a href="#" onclick="event.preventDefault(); document.getElementById('subscription-cancel-form').submit();">
                                 <i class="fa-solid fa-address-card"></i>有料会員を解約する
                             </a>
