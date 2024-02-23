@@ -18,9 +18,9 @@
             </div>
             <div class="card-body">
                     @if(!$user->subscribed('default'))
-                        <h1>無料会員</h1><br>
+                        <h3>現在、無料会員です。有料会員になると、予約やレビュー投稿、お気に入り登録ができます。</h3><br>
                     @else
-                        <h1>有料会員</h1><br>
+                        <h3>現在、有料会員です。予約やレビュー投稿、お気に入り登録ができます。</h3><br>
                     @endif
             </div>
         </div>
