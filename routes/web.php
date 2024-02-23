@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::controller(SubscriptionController::class)->group(function () {
         Route::get('/subscription', 'index')->name('subscription')->middleware('auth');
         Route::post('/subscription/payment', 'store')->name('stripe.store')->middleware('auth');
-        Route::post('/subscription/cancel/', 'cancelsubscription')->name('stripe.cancel');
+        Route::post('/subscription/cancel', 'cancelsubscription')->name('stripe.cancel');
         Route::get('/edit_card', 'edit')->name('mypage.edit_card')->middleware('auth');
         Route::post('/update_card', 'update')->name('stripe.update')->middleware('auth');
     
