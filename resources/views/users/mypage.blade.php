@@ -22,7 +22,7 @@
                         <i class="fa-solid fa-pen-to-square"></i>会員情報の編集
                     </a><br><br>
                     @if(!$user->subscribed('default'))
-                        <a href="{{ route('subscription.index') }}">
+                        <a href="{{ route('subscription') }}">
                             <i class="fa-solid fa-address-card"></i>有料会員登録</a>
                     @else
                         <a href="{{ route('stripe.cancel') }}">
