@@ -42,8 +42,8 @@
                         </a><br><br>
                         <a href="{{route('mypage.favorite')}}">
                             <i class="fa-solid fa-star"></i>お気に入り一覧
-                        </a>
-                    @endif<br><br>
+                        </a><br>
+                    @endif
                     @if(!$user->subscribed('default'))
                         <a href="{{ route('subscription') }}">
                         <i class="fa-solid fa-address-card"></i>有料会員に登録する</a>
