@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Datetime
 
 class ReservationController extends Controller
 {
@@ -40,15 +41,9 @@ class ReservationController extends Controller
             return redirect()->back()->with('error', '予約時間は30分ごとに設定してください。');
         }
 
-        // 予約日時が過去の日付である場合
-        if ($reservedTime->lt(now()->startOfDay())) {
-            return redirect()->back()->with('error', '過去の日付に予約することはできません。');
-        }
-
-        // 予約日時が翌日以降の日時でない場合
-        $tomorrow = now()->addDay();
-        if (!$reservedTime->isSameDay($tomorrow) && $reservedTime->lt($tomorrow)) {
-            return redirect()->back()->with('error', '予約日時は翌日以降の日時に設定してください。');
+     
+        if (new DateTime() > $date_time) {
+            return back()->withInput($request->input())->withErrors(['message' => '現在より過去の予約日時は指定できません。']);
         }
 
         // 予約データを保存
