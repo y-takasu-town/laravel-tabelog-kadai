@@ -34,16 +34,18 @@
 
                 @foreach ($stores as $store)
                     <div class="my-5">
-                        <a href="{{route('stores.show',$store)}}">{{ $store->name }}<br>
-                            @if ($store->image !== "")
-                                <img src="{{ asset($store->image) }}" class="img-thumbnail">
-                            @else
-                                <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
-                            @endif
-                        </a><br>
-                            {{ $store->category->name }}<br> 
-                            {{ $store->address }}<br>
-                            {{ $store->discription }}<br>
+                        <div class="d-inline p-2 text-bg-primary">
+                            <a href="{{route('stores.show',$store)}}">{{ $store->name }}<br>
+                                @if ($store->image !== "")
+                                    <img src="{{ asset($store->image) }}" class="img-thumbnail">
+                                @else
+                                    <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
+                                @endif
+                            </a><br>
+                                {{ $store->category->name }}<br> 
+                                {{ $store->address }}<br>
+                                {{ $store->discription }}<br>
+                        </div>
                     </div>
                 @endforeach
             </div>
