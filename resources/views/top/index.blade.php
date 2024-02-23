@@ -33,7 +33,7 @@
 @section('js')
     <script>
         // ローテーションさせる背景画像のURL配列
-        var images = ["public/images/nagoya-bg.jpg", "public/images/hitsumabushi.jpg", "public/images/tebasaki.jpg"];
+        var images = ["images/nagoya-bg.jpg", "images/hitsumabushi.jpg", "images/tebasaki.jpg"];
         var currentIndex = 0;
 
         function rotateBackground() {
