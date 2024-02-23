@@ -18,11 +18,11 @@
             </div>
             <div class="card-body">
                     @if(!$user->subscribed('default'))
-                        <h3>無料会員</h3><br>
-                        <p>有料会員になると、予約やレビュー投稿、お気に入り登録ができます。</p>
+                        <h3 class="text-center">無料会員</h3><br>
+                        <p class="text-center">有料会員になると、予約やレビュー投稿、お気に入り登録ができます。</p>
                     @else
-                        <h3>有料会員</h3><br>
-                        <p>予約やレビュー投稿、お気に入り登録ができます。</p>
+                        <h3 class="text-center">有料会員</h3><br>
+                        <p class="text-center">予約やレビュー投稿、お気に入り登録ができます。</p>
                     @endif
             </div>
         </div>
