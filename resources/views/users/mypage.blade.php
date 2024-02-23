@@ -17,19 +17,11 @@
                 会員ステータス
             </div>
             <div class="card-body">
-                <ul>
                     @if(!$user->subscribed('default'))
-                        <a href="{{ route('subscription') }}">
-                        <i class="fa-solid fa-address-card"></i>有料会員に登録する</a>
+                        <h1>無料会員</h1><br>
                     @else
-                        <a href="#" onclick="event.preventDefault(); document.getElementById('subscription-cancel-form').submit();">
-                            <i class="fa-solid fa-address-card"></i>有料会員を解約する
-                        </a>
-                        <form id="subscription-cancel-form" action="{{ route('subscription.cancel') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+                        <h1>有料会員</h1><br>
                     @endif
-                </ul>
             </div>
         </div>
         <div class="card mt-5">
@@ -50,7 +42,19 @@
                         </a><br><br>
                         <a href="{{route('mypage.favorite')}}">
                             <i class="fa-solid fa-star"></i>お気に入り一覧
+                        </a><br><br>
+                    @if(!$user->subscribed('default'))
+                        <a href="{{ route('subscription') }}">
+                        <i class="fa-solid fa-address-card"></i>有料会員に登録する</a>
+                    @else
+                        <a href="#" onclick="event.preventDefault(); document.getElementById('subscription-cancel-form').submit();">
+                            <i class="fa-solid fa-address-card"></i>有料会員を解約する
                         </a>
+                        <form id="subscription-cancel-form" action="{{ route('subscription.cancel') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endif
+
                     @endif
                 </ul>
             </div>
