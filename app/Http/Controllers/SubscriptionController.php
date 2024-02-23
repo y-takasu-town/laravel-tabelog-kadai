@@ -93,13 +93,13 @@ class SubscriptionController extends Controller
     {
         $user = Auth::user();
         $subscriptionEndsAt = null;
-
+    
         // 有料会員であれば、有料会員の期限を取得する
         if ($user->subscribed('default')) {
             $subscriptionEndsAt = $user->subscription('default')->ends_at;
         }
-
-        return view('mypage', compact('user', 'subscriptionEndsAt'));
+    
+        return view('users.mypage', compact('user', 'subscriptionEndsAt'));
     }
 
 }
