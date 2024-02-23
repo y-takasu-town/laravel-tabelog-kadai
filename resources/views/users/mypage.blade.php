@@ -16,25 +16,29 @@
             <div class="card-header" style="font-size: 20px; font-weight: bold;">
                 会員ステータス
             </div>
-            <div class="card-body">
-                @if (Auth::check())
-                    @if (Auth::user()->subscribed('default'))
-                        @if (Auth::user()->subscription('default')->onGracePeriod() && empty(Auth::user()->subscription('default')->ends_at))
-                            <form method="POST" action="{{ route('subscription.cancelsubscription') }}">
-                                @csrf
-                                有料会員です。<button class="btn btn-primary">有料会員を解約する</button>
-                            </form>
-                        @elseif (Auth::user()->subscription('default')->onGracePeriod() && !empty(Auth::user()->subscription('default')->ends_at))
-                            <p>有料会員を解約しました。{{ Auth::user()->subscription('default')->ends_at->format('Y年m月d日') }}までご利用いただけます。</p>
-                        @endif
-                    @else
-                        <p>有料会員に登録すると、店舗予約やお気に入り機能、お店のレビュー投稿ができます。</p>
-                        <a class="btn btn-primary" href="{{ route('subscription') }}">有料会員に登録する</a>
-                    @endif
-                @else
-                    <p>ログインしてください。</p>
-                @endif
-            </div>
+            @if(!$user->subscribed('default'))
+                <tr>
+                <th scope="row">
+                    <a href="{{ route('subscription.index') }}" class="h4 text-decoration-none text-nowrap fw-bold link-body-emphasis">有料会員登録</a>
+                </th>
+                <td>
+                <div class="mx-auto text-nowrap">
+                    お気に入り登録・来店予約・レビューの投稿ができます
+                    </div>
+                </td>
+                </tr>
+            @else
+                <tr>
+                <th scope="row" >
+                    <a href="{{ route('subscription.cancelsubscription') }}" class="h4 text-decoration-none text-nowrap fw-bold link-body-emphasis">有料会員を解約する</a>
+                </th>
+                <td>
+                    <div class="text-nowrap">
+                    有料会員（お気に入り追加・来店予約・レビュー投稿）の利用をやめる
+                    </div>
+                </td>
+                </tr>
+            @endif
         </div>
         <div class="card mt-5">
             <div class="card-header" style="font-size: 20px; font-weight: bold;">
