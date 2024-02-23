@@ -21,14 +21,6 @@
                     <a href="{{route('mypage.edit')}}">
                         <i class="fa-solid fa-pen-to-square"></i>会員情報の編集
                     </a><br><br>
-                    @if(!$user->subscribed('default'))
-                        <a href="{{ route('subscription') }}">
-                            <i class="fa-solid fa-address-card"></i>有料会員登録</a>
-                    @else
-                        <a href="{{ route('stripe.cancel') }}">
-                            <i class="fa-solid fa-address-card"></i>有料会員を解約する</a>
-                    @endif
-                    <br><br>
                     <a href="{{route('mypage.edit_password')}}">
                         <i class="fa-solid fa-lock"></i>パスワード変更
                     </a><br><br>
@@ -39,6 +31,13 @@
                         <a href="{{route('mypage.favorite')}}">
                             <i class="fa-solid fa-star"></i>お気に入り一覧
                         </a>
+                    @endif
+                    @if(!$user->subscribed('default'))
+                        <a href="{{ route('subscription') }}">
+                        <i class="fa-solid fa-address-card"></i>有料会員に登録する</a>
+                    @else
+                        <a href="{{ route('stripe.cancel') }}">
+                        <i class="fa-solid fa-address-card"></i>有料会員を解約する</a>
                     @endif
                 </ul>
             </div>
