@@ -31,4 +31,17 @@
 @endsection
 
 @section('js')
+    <script>
+        // ローテーションさせる背景画像のURL配列
+        var images = ["nagoya-bg.jpg", "hitsumabushi.jpg", "tebasaki.jpg"];
+        var currentIndex = 0;
+
+        function rotateBackground() {
+            document.body.style.backgroundImage = "url('" + images[currentIndex] + "')";
+            currentIndex = (currentIndex + 1) % images.length; // 次の背景画像へ
+        }
+
+        // 5秒ごとに背景画像をローテーション
+        setInterval(rotateBackground, 5000);
+    </script>
 @endsection
