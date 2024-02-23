@@ -5,23 +5,12 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('ログインに成功しました。') }}</div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        {{ __('左上のNAGOYAMESHIをタップして、名古屋の味を見つけよう。') }}
-                    </div>
-                </div>
+    <div class="container-fluid top-container">
+        <div class="row justify-content-center align-items-center" style="height: 70vh">
+            <div class="col-md-6 text-center mx-auto">
+                <h1>左上のNAGOYAMESHIをタップして、名古屋の味を、探そう。</h1>
             </div>
         </div>
     </div>
 @endsection
+
