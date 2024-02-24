@@ -21,8 +21,9 @@ class ReservationController extends Controller
 
     public function create(Store $store)
     {
-        if (!$this->subscriptionService->isSubscribed($user, 'default')) {
-            return redirect()->route('subscription')->with('message', '予約機能は有料会員限定です。');
+        if (!Auth::user()->subscribed('default'))
+        {
+        return redirect()->route('subscription')->with('message', '予約機能は有料会員限定です。');
         }
         return view('reservations.create', compact('store'));
     }
