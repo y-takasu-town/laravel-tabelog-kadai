@@ -25,25 +25,18 @@
                 </div>
             </div>
 
-            <!-- メールアドレス入力 -->
-            <div class="form-group row mb-3">
-                <label for="email" class="col-md-3 col-form-label text-md-right">メールアドレス</label>
+            <!-- メールアドレス入力欄 -->
+            <div class="form-group row">
+                <label for="email" class="col-md-5 col-form-label text-md-left">メールアドレス<span class="ml-1 nagoyameshi-require-input-label"><span class="nagoyameshi-require-input-label-text">必須</span></span></label>
+
                 <div class="col-md-7">
-                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email" autofocus placeholder="samurai@samurai.com">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror nagoyameshi-login-input" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="nagoyameshi@nagoyameshi.com">
+
                     @error('email')
-                        @if(strpos($message, 'メールアドレス') !== false)
-                            <span class="invalid-feedback" role="alert">
-                                <strong>メールアドレスを入力してください</strong>
-                            </span>
-                        @elseif(strpos($message, 'email') !== false)
-                            <span class="invalid-feedback" role="alert">
-                                <strong>有効なメールアドレスを入力してください</strong>
-                            </span>
-                        @else
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @endif
+                        <!-- エラーメッセージ -->
+                        <span class="invalid-feedback" role="alert">
+                            <strong>メールアドレスを入力してください</strong>
+                        </span>
                     @enderror
                 </div>
             </div>
