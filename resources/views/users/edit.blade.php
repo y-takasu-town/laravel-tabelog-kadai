@@ -31,9 +31,19 @@
                 <div class="col-md-7">
                     <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email" autofocus placeholder="samurai@samurai.com">
                     @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>メールアドレスを入力してください</strong>
-                        </span>
+                        @if(strpos($message, 'メールアドレス') !== false)
+                            <span class="invalid-feedback" role="alert">
+                                <strong>メールアドレスを入力してください</strong>
+                            </span>
+                        @elseif(strpos($message, 'email') !== false)
+                            <span class="invalid-feedback" role="alert">
+                                <strong>有効なメールアドレスを入力してください</strong>
+                            </span>
+                        @else
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @endif
                     @enderror
                 </div>
             </div>
