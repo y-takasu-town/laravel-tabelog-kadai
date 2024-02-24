@@ -27,7 +27,7 @@
 
             <!-- メールアドレス入力欄 -->
             <div class="form-group row">
-                <label for="email" class="col-md-5 col-form-label text-md-left">メールアドレス<span class="ml-1 nagoyameshi-require-input-label"><span class="nagoyameshi-require-input-label-text">必須</span></span></label>
+                <label for="email" class="col-md-3 col-form-label text-md-right">メールアドレス</label>
 
                 <div class="col-md-7">
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror nagoyameshi-login-input" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="nagoyameshi@nagoyameshi.com">
