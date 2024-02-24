@@ -8,14 +8,22 @@ use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use ReservedTime;
+use App\Services\SubscriptionService;
 
 class ReservationController extends Controller
 {
+    protected $subscriptionService;
+
+    public function __construct(SubscriptionService $subscriptionService)
+    {
+        $this->subscriptionService = $subscriptionService;
+    }
+
     public function create(Store $store)
     {
-        if (!Auth::user()->subscribed('default'))
-        {
-        return redirect()->route('subscription')->with('message','予約機能は有料会員限定です。');
+        $user = Auth::user();
+        if (!$this->subscriptionService->isSubscribed($user, 'default')) {
+            return redirect()->route('subscription')->with('message', '予約機能は有料会員限定です。');
         }
         return view('reservations.create', compact('store'));
     }

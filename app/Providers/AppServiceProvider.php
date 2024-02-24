@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
+use App\Services\SubscriptionService;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -16,7 +17,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(SubscriptionService::class, function ($app) {
+            return new SubscriptionService();
+        });
     }
 
     /**
